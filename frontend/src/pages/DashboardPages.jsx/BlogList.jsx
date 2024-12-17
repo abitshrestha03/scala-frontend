@@ -5,6 +5,7 @@ import { UploadCloud } from "lucide-react";
 import PropTypes from "prop-types";
 import { toast, ToastContainer } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toastify
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const BlogList = ({ refresh }) => {
   const [files, setFiles] = useState([]);
@@ -36,7 +37,7 @@ const BlogList = ({ refresh }) => {
   const fetchBlogs = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/v1/admin/blog",
+        `${API_BASE_URL}/api/v1/admin/blog`,
         { withCredentials: true }
       );
       console.log(response.data.data);
@@ -59,7 +60,7 @@ const BlogList = ({ refresh }) => {
     console.log(blogToDelete);
     try {
       await axios.delete(
-        `http://localhost:8000/api/v1/admin/blog/${blogToDelete.slug}`,
+        `${API_BASE_URL}/api/v1/admin/blog/${blogToDelete.slug}`,
         { withCredentials: true } // Configuration for credentials
       );
       fetchBlogs();
@@ -112,7 +113,7 @@ const BlogList = ({ refresh }) => {
       };
 
       await axios.patch(
-        `http://localhost:8000/api/v1/admin/blog/${updatedBlog.slug}`,
+        `${API_BASE_URL}/api/v1/admin/blog/${updatedBlog.slug}`,
         payload, // Send the updated blog data
         { withCredentials: true } // Configuration for credentials
       );
@@ -139,7 +140,7 @@ const BlogList = ({ refresh }) => {
   const handleStatusClick = async (slug, currentStatus) => {
     try {
       await axios.patch(
-        `http://localhost:8000/api/v1/admin/toggle/b/${slug}`, // Use `slug` directly
+        `${API_BASE_URL}/api/v1/admin/toggle/b/${slug}`, // Use `slug` directly
         {
           isFeatured: !currentStatus, // Toggle the current status
         },
