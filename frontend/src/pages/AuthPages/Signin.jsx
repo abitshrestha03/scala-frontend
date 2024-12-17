@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toa
 import { useAuth } from "../../Context/AuthContext";
 // import { signIn } from "../../api-client";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
-console.log(API_BASE_URL);
 
 
 const SigninPage = () => {
@@ -28,7 +27,7 @@ const SigninPage = () => {
     try {
       const response = await axios.post(
         // `${API_BASE_URL}/api/v1/admin/login`,
-        `https://scala-backend-y102.onrender.com/api/v1/admin/login`,
+        `${API_BASE_URL}/api/v1/admin/login`,
         {
           email: formData.email,
           password: formData.password,
