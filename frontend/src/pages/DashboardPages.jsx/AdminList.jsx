@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { toast, ToastContainer } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toastify
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const AdminTable = ({ refresh }) => {
   const [admins, setAdmins] = useState([]); // Admin list state
@@ -12,7 +13,7 @@ const AdminTable = ({ refresh }) => {
   const fetchAdmins = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/v1/admin/getAllAdmins",
+        `${API_BASE_URL}/api/v1/admin/getAllAdmins`,
         { withCredentials: true }
       );
       setAdmins(response.data.data);
@@ -33,7 +34,7 @@ const AdminTable = ({ refresh }) => {
 
     try {
       await axios.delete(
-        `http://localhost:8000/api/v1/admin/delete-admin/${adminToDelete.username}`,
+        `${API_BASE_URL}/api/v1/admin/delete-admin/${adminToDelete.username}`,
         { withCredentials: true }
       );
       toast.success("Admin user deleted successfully!");
