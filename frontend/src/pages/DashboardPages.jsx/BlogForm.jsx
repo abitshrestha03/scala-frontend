@@ -91,7 +91,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
       console.log(payload);
 
       const response = await axios.post(
-        "${API_BASE_URL}/api/v1/admin/blog",
+        `${API_BASE_URL}/api/v1/admin/blog`,
         payload,
         {
           withCredentials: true,
