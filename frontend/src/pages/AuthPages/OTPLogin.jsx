@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const OTPLogin = () => {
   const location = useLocation();
@@ -20,7 +21,7 @@ const OTPLogin = () => {
       console.log(email);
       console.log(otp);
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/verify-login",
+        `${API_BASE_URL}/api/v1/admin/verify-login`,
         {
           email,
           otp,
