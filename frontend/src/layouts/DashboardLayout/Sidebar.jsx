@@ -9,6 +9,7 @@ import SupportIcon from "../../assets/icons/SupportIcon";
 import SettingsIcon from "../../assets/icons/SettingsIcon";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const Sidebar = () => {
   // State to toggle sidebar visibility
@@ -25,7 +26,7 @@ const Sidebar = () => {
     const fetchAdminRole = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/v1/admin/get-admin",
+          `${API_BASE_URL/api/v1/admin/get-admin`,
           {
             withCredentials: true,
           }
