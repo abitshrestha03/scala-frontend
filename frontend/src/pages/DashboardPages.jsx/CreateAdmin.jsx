@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import AdminTable from "./AdminList";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const CreateAdmin = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const CreateAdmin = () => {
     try {
       // Replace with your API endpoint
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/create-admin",
+        `${API_BASE_URL}/api/v1/admin/create-admin`,
         formData, // The request payload
         {
           headers: { "Content-Type": "application/json" }, // Headers
