@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const OTP = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ const OTP = () => {
       console.log(email);
       console.log(otp);
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/verify-otp",
+        `${API_BASE_URL}/api/v1/admin/verify-otp`,
         {
           email,
           username,
