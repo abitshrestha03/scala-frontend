@@ -1,4 +1,5 @@
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 // Function to handle the login
 export const signIn = async (formData) => {
@@ -6,7 +7,7 @@ export const signIn = async (formData) => {
     console.log(formData);
     // Send the POST request for login
     const response = await axios.post(
-      `http://localhost:8000/api/v1/admin/login`,
+      `{API_BASE_URL}/api/v1/admin/login`,
       {
         email: formData.email,
         password: formData.password,
@@ -32,7 +33,7 @@ export const signIn = async (formData) => {
 // api-client.js
 export const validateToken = async () => {
   const response = await axios.get(
-    `http://localhost:8000/api/v1/admin/get-admin`,
+    `{API_BASE_URL}/api/v1/admin/get-admin`,
     {
       withCredentials: true,
     }
