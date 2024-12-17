@@ -21,7 +21,7 @@ import ProtectedRoute from "./pages/DashboardPages.jsx/ProtectedRoute";
 import NotFoundPage from "./NotFoundPage";
 const App = () => {
   const {isLoggedIn}=useAuth();
-  console.log(isLoggedIn);
+  console.log("is logged in",isLoggedIn);
   const router = createBrowserRouter([
     {
       path: "/",
