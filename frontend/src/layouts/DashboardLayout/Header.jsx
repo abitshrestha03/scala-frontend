@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../Context/AuthContext";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const Header = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -18,7 +19,7 @@ const Header = () => {
 
   const handleLogout =async () => {
 
-    const response=await axios.get(`http://localhost:8000/api/v1/admin/logout`);
+    const response=await axios.get(`${API_BASE_URL/api/v1/admin/logout`);
     if(response.data.success){
       logout();
       localStorage.removeItem("user");
