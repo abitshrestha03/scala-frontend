@@ -1,5 +1,6 @@
 import axios from "axios";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+console.log("API URL",API_BASE_URL)
 
 // Function to handle the login
 export const signIn = async (formData) => {
@@ -38,7 +39,7 @@ export const validateToken = async () => {
       withCredentials: true,
     }
   );
-  console.log(response);
+  console.log("Response",response);
 
   if (response.status !== 200) {
     throw new Error("Token invalid");
