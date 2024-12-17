@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const SignupPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/create",
+        `${API_BASE_URL}/api/v1/admin/create`,
         {
           username: formData.username,
           email: formData.email,
