@@ -19,7 +19,7 @@ const Header = () => {
 
   const handleLogout =async () => {
 
-    const response=await axios.get(`${API_BASE_URL/api/v1/admin/logout`);
+    const response=await axios.get(`${API_BASE_URL}/api/v1/admin/logout`);
     if(response.data.success){
       logout();
       localStorage.removeItem("user");
