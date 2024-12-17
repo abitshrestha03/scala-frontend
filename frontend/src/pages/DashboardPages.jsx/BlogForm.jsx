@@ -4,6 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { UploadCloud } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toastify
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 axios.defaults.withCredentials = true; // Enable cookies for all requests
 
@@ -90,7 +91,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
       console.log(payload);
 
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/blog",
+        "${API_BASE_URL}/api/v1/admin/blog",
         payload,
         {
           withCredentials: true,
