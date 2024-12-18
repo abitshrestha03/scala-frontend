@@ -237,10 +237,10 @@ const BlogList = ({ refresh }) => {
                       blog.isFeatured
                     )} max-w-full truncate cursor-pointer`}
                     onClick={() =>
-                      handleStatusClick(blog.slug, blog.isFeatured)
+                      handleStatusClick(blog?.slug, blog?.isFeatured)
                     } // Pass slug and current status
                   >
-                    {blog.isFeatured ? "Featured" : "Not Featured"}
+                    {blog?.isFeatured ? "Featured" : "Not Featured"}
                   </button>
                 </td>
                 <td className="py-3 px-4">
