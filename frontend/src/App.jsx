@@ -43,13 +43,21 @@ const App = () => {
       path: "/signin",
       element: <SigninPage/>,
     },
-    {
+    // {
+    //   path: "/dashboard",
+    //   element:<ProtectedRoute><DashboardLayout><Dashboard/></DashboardLayout></ProtectedRoute>,
+    // },
+    // {
+    //   path: "/admins",
+    //   element:<ProtectedRoute><DashboardLayout><CreateAdmin/></DashboardLayout></ProtectedRoute>,
+    // },
+       {
       path: "/dashboard",
-      element:<ProtectedRoute><DashboardLayout><Dashboard/></DashboardLayout></ProtectedRoute>,
+      element:<DashboardLayout><Dashboard/></DashboardLayout>,
     },
     {
       path: "/admins",
-      element:<ProtectedRoute><DashboardLayout><CreateAdmin/></DashboardLayout></ProtectedRoute>,
+      element:<DashboardLayout><CreateAdmin/></DashboardLayout>,
     },
     {
       path:"/about",
