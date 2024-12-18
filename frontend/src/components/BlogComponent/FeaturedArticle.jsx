@@ -30,7 +30,6 @@ const FeaturedArticle = () => {
               This is a short description of the featured article. You can check
               out more articles below.
             </p>
-            <a
             <Button text="Read More" />
           </div>
           {/* Right Image */}
