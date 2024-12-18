@@ -1,24 +1,24 @@
 import { useParams, useNavigate } from "react-router-dom";
-import BlogImage1 from "../../assets/images/BlogImage1.png";
-import BlogDetailsImage2 from "../../assets/images/BlogDetailsImage2.png";
-import BlogDetailsImage3 from "../../assets/images/BlogDetailsImage3.png";
-import BlogDetailsImage4 from "../../assets/images/BlogDetailsImage4.png";
+// import BlogImage1 from "../../assets/images/BlogImage1.png";
+// import BlogDetailsImage2 from "../../assets/images/BlogDetailsImage2.png";
+// import BlogDetailsImage3 from "../../assets/images/BlogDetailsImage3.png";
+// import BlogDetailsImage4 from "../../assets/images/BlogDetailsImage4.png";
 import Article1Image from "../../assets/images/Article1.png";
 import Article2Image from "../../assets/images/Article2.png";
 import Article3Image from "../../assets/images/Article3.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const BlogDetails = () => {
   const [blogs, setBlogs] = useState([]);
   const { articleId } = useParams();
   const navigate = useNavigate();
 
-  
   const fetchBlogs = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/v1/blogs/${articleId}`,
+        `${API_BASE_URL}/api/v1/blogs/${articleId}`
       );
       console.log(response.data.data);
       setBlogs(response.data.data);
@@ -66,9 +66,9 @@ const BlogDetails = () => {
     Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.`,
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchBlogs();
-  },[articleId]);
+  }, [articleId]);
 
   // Fallback if blog ID doesn't exist
   if (parseInt(articleId)) {
@@ -78,37 +78,40 @@ const BlogDetails = () => {
   return (
     <div className="mt-20 px-4 ms:px-6 md:px-8 lg:px-20 xl:px-32 text-white min-h-screen">
       <button onClick={() => navigate(-1)} className="text-white">
-        {"< "}<span className="underline">Back</span>
+        {"< "}
+        <span className="underline">Back</span>
       </button>
       <article className="mt-16">
         <div className="flex gap-4 items-center">
           <span className="rounded-sm py-1 text-white bg-navblue px-2 text-sm mb-2">
-            Insight
+            {blogs?.category}
           </span>
-          <p className="text-sm">{blog.date}</p>
+          <p className="text-sm">
+            {" "}
+            {new Date(blogs?.createdAt).toLocaleDateString("en-CA")}
+          </p>
         </div>
         <h1 className="text-3xl mt-4 font-bold mb-2 tracking-wider">
-          {blogs.title}
+          {blogs?.title}
         </h1>
 
         <div className="flex items-center gap-8">
-          <img
+          {/* <img
             src={BlogImage1}
             alt={blog.title}
             className="w-20 h-20 object-cover rounded-lg mb-6"
-          />
+          /> */}
           <p className="text-gray-400 text-sm mb-4 flex flex-col-reverse">
             <span>{blogs.author?.role}</span>
             <span className="text-white">{blogs.author?.name}</span>
           </p>
         </div>
-        <p className="text-gray-300 mb-6">{blog.content}</p>
-        <img src={blogs.image} className="w-full" alt="" />
-        <p className="text-gray-300 mt-2 mb-4">{blog.imgTitle}</p>
-        <p className="text-gray-300">{blog.imgDescription}</p>
+        <p className="text-gray-300 mb-6">{blogs?.content}</p>
+        <img src={blogs?.image} className="w-[34vw] h-[50vh]" alt="" />
+        {/* <p className="text-gray-300 mt-2 mb-4">{blog.imgTitle}</p> */}
+        {/* <p className="text-gray-300">{blog.imgDescription}</p> */}
         <div className="text-white mt-4 font-sans">
-          {/* Quote Section */}
-          <div className="text-center mb-8">
+          {/* <div className="text-center mb-8">
             <div
               className="p-6 rounded-lg inline-block"
               style={{
@@ -126,10 +129,9 @@ const BlogDetails = () => {
               </p>
               <p className="mt-4 font-bold">Thomas Edition</p>
             </div>
-          </div>
+          </div> */}
 
-          {/* Article Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <img
               src={BlogDetailsImage3}
               alt="Hand"
@@ -140,14 +142,13 @@ const BlogDetails = () => {
               alt="Digital Human"
               className="w-full rounded-lg"
             />
-          </div>
-          {/* Article Header Section */}
-          <div className="mt-4">
+          </div> */}
+          {/* <div className="mt-4">
             <p className="text-gray-300 text-xl">
               {blogs.content}
-              {/* This is the Article headline - Some Inner headline for the
+               This is the Article headline - Some Inner headline for the
               article. Some Inner headline for the article. Some Inner headline
-              for the article. Some Inner headline for the article.{" "} */}
+              for the article. Some Inner headline for the article.{" "} 
             </p>
             <p className="text-lg mt-4 italic font-light">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
@@ -163,11 +164,13 @@ const BlogDetails = () => {
               the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor
               sit amet., comes from a line in section 1.10.32.
             </p>
-          </div>
+          </div> */}
 
           {/* Related Articles */}
           <div className="mt-12">
-            <h2 className="text-3xl font-bold mb-12 text-center">Related Articles</h2>
+            <h2 className="text-3xl font-bold mb-12 text-center">
+              Related Articles
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {articleData.map((article, index) => (
                 <div
