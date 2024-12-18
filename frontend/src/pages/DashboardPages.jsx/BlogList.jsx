@@ -294,7 +294,7 @@ const BlogList = ({ refresh }) => {
                   placeholder="Enter blog title"
                 />
               </div>
-              <div className="space-y-2 flex flex-col">
+          <div className="space-y-2 flex flex-col">
                 <label
                   htmlFor="edit-category"
                   className="font-semibold text-xs"
@@ -328,6 +328,7 @@ const BlogList = ({ refresh }) => {
                   id="edit-author-name"
                   name="author.name"
                   value={editBlog.author?.name}
+                  readOnly
                   onChange={(e) =>
                     setEditBlog({
                       ...editBlog,
