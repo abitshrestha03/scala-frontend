@@ -7,7 +7,6 @@ import { useAuth } from "../../Context/AuthContext";
 import NavLogo from "../../assets/images/NavLogo.svg";
 // import { signIn } from "../../api-client";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
-console.log(API_BASE_URL);
 
 const SigninPage = () => {
   const navigate = useNavigate();
