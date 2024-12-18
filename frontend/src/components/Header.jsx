@@ -148,13 +148,43 @@ const Header = () => {
             >
               SERVICES
             </NavLink>
+            <NavLink
+              to="/resources/portfolio"
+              className="block px-4 py-2 text-sm hover:bg-gray-800 text-navWhite rounded-md cursor-pointer font-semibold lg:hidden"
+              onClick={() => {
+                setIsDropdownOpen(false);
+                closeMenu();
+              }}
+            >
+              PORTFOLIO
+            </NavLink>
+            <NavLink
+              to="/resources/blogs"
+              className="block px-4 py-2 text-sm hover:bg-gray-800 text-navWhite rounded-md cursor-pointer font-semibold lg:hidden"
+              onClick={() => {
+                setIsDropdownOpen(false);
+                closeMenu();
+              }}
+            >
+              BLOGS
+            </NavLink>
+            <NavLink
+              to="/resources/careers"
+              className="block px-4 py-2 text-sm hover:bg-gray-800 text-navWhite rounded-md cursor-pointer font-semibold lg:hidden"
+              onClick={() => {
+                setIsDropdownOpen(false);
+                closeMenu();
+              }}
+            >
+              CAREERS
+            </NavLink>
             <div
               className="relative"
               onMouseEnter={() => !isMenuOpen && setIsDropdownOpen(true)} // Open on hover (desktop)
               onMouseLeave={() => !isMenuOpen && setIsDropdownOpen(false)} // Close on hover out (desktop)
             >
               <button
-                className={`flex items-center text-navWhite font-semibold hover:bg-navbg pt-2 py-1 lg:px-1 xl:px-4 space-x-2 ${
+                className={`items-center text-navWhite font-semibold hover:bg-navbg pt-2 py-1 lg:px-1 xl:px-4 space-x-2 hidden lg:flex${
                   isMenuOpen ? "cursor-pointer" : ""
                 }`}
                 onClick={isMenuOpen ? toggleDropdown : undefined} // Clickable in burger menu only
