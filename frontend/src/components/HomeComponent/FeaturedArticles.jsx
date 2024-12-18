@@ -61,24 +61,26 @@ const FeaturedArticles = () => {
           >
             {articles.map((article, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-[#1B1C2A] rounded-lg shadow-lg">
-                  <img
-                    src={article.image} // Assuming 'image' is returned in the API
-                    alt={article.title}
-                    className="mb-4 w-full h-auto sm:h-[200px] md:h-[250px] lg:h-[273px] object-cover"
-                  />
-                  <div className="px-4 flex flex-col">
-                    <span className="text-sm text-white bg-[#003DFF40] px-2 py-1 rounded self-start">
-                      {article.category}
-                    </span>
-                    <p className="text-xl font-semibold mt-2 mb-1 leading-8 w-full text-white text-start">
-                      {article.title}
-                    </p>
-                    <p className="text-[#FFFFFF99] text-sm self-start pb-4">
-                      Author - {article.author.name}
-                    </p>
+                <Link key={article._id} to={`/resources/blogs/${article.slug}`}>
+                  <div className="bg-[#1B1C2A] rounded-lg shadow-lg">
+                    <img
+                      src={article.image} // Assuming 'image' is returned in the API
+                      alt={article.title}
+                      className="mb-4 w-full h-auto sm:h-[200px] md:h-[250px] lg:h-[273px] object-cover"
+                    />
+                    <div className="px-4 flex flex-col">
+                      <span className="text-sm text-white bg-[#003DFF40] px-2 py-1 rounded self-start">
+                        {article.category}
+                      </span>
+                      <p className="text-xl font-semibold mt-2 mb-1 leading-8 w-full text-white text-start">
+                        {article.title}
+                      </p>
+                      <p className="text-[#FFFFFF99] text-sm self-start pb-4">
+                        Author - {article.author.name}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>
