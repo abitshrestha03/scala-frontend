@@ -42,7 +42,7 @@ const SigninPage = () => {
       };
 
       localStorage.setItem("user", JSON.stringify(userData));
-      await signIn(formData);
+      // await signIn(formData);
       if (response?.data?.data?.role === "ADMIN") {
         toast.success("Signin successfully!");
         login();
