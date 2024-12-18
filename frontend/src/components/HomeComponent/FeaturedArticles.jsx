@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Button from "../Button";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const FeaturedArticles = () => {
   const [articles, setArticles] = useState([]);
@@ -13,7 +14,7 @@ const FeaturedArticles = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/v1/blogs");
+        const response = await axios.get(`${API_BASE_URL}/api/v1/blogs`);
         console.log(response);
         const blogs = response.data?.data?.blogs || [];
         const featuredArticles = blogs.filter(blog => blog.isFeatured);
