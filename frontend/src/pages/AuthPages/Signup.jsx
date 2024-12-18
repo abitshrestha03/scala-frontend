@@ -12,6 +12,7 @@ const SignupPage = () => {
     confirmPassword: "",
   });
 
+  const [isCreatingAccount,setIsCreatingAccount] = useState(false);
   const navigate = useNavigate(); // Initialize navigate
 
   const handleChange = (e) => {
@@ -27,6 +28,8 @@ const SignupPage = () => {
     }
 
     try {
+      if(isCreatingAccount) return;
+      setIsCreatingAccount(true);
       const response = await axios.post(
         `${API_BASE_URL}/api/v1/admin/create`,
         {
@@ -47,6 +50,8 @@ const SignupPage = () => {
     } catch (error) {
       console.error("Error creating account:", error);
       alert("Failed to create account. Please try again.");
+    }finally{
+      setIsCreatingAccount(false);
     }
   };
 
@@ -126,10 +131,11 @@ const SignupPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-navblue text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200"
+            className={`w-full bg-navblue text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200 ${isCreatingAccount ? 'cursor-not-allowed opacity-50' : ''}`}
+            disabled={isCreatingAccount}
           >
-            Create Account
-          </button>
+            {isCreatingAccount?"Creating . . .":"Create Account"}
+        </button>
         </form>
         <p className="text-sm text-gray-600 text-center mt-4">
           Already have an account?{" "}
