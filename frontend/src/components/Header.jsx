@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Logo from "../assets/icons/Logo";
+import MobileLogo from "../assets/icons/MoblieLogo";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -107,12 +108,12 @@ const Header = () => {
             }
           >
             <Link to="/" className={isMenuOpen ? "block mb-4" : "hidden"}>
-              <Logo />
+              <MobileLogo />
             </Link>
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm md:text-lg lg:text-sm xl:text-base ${
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base ${
                   isActive
                     ? "text-navblue bg-navbg"
                     : "text-navWhite hover:bg-navbg"
@@ -125,7 +126,7 @@ const Header = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm md:text-lg lg:text-sm xl:text-base ${
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base ${
                   isActive
                     ? "text-navblue bg-navbg"
                     : "text-navWhite hover:bg-navbg"
@@ -138,7 +139,7 @@ const Header = () => {
             <NavLink
               to="/services"
               className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm md:text-lg lg:text-sm xl:text-base ${
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base ${
                   isActive
                     ? "text-navblue bg-navbg"
                     : "text-navWhite hover:bg-navbg"
@@ -150,33 +151,56 @@ const Header = () => {
             </NavLink>
             <NavLink
               to="/resources/portfolio"
-              className="block px-4 py-2 text-sm hover:bg-gray-800 text-navWhite rounded-md cursor-pointer font-semibold lg:hidden"
-              onClick={() => {
-                setIsDropdownOpen(false);
-                closeMenu();
-              }}
+              className={({ isActive }) =>
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base lg:hidden ${
+                  isActive
+                    ? "text-navblue bg-navbg"
+                    : "text-navWhite hover:bg-navbg"
+                }`
+              }
+              onClick={closeMenu}
+
             >
               PORTFOLIO
             </NavLink>
             <NavLink
               to="/resources/blogs"
-              className="block px-4 py-2 text-sm hover:bg-gray-800 text-navWhite rounded-md cursor-pointer font-semibold lg:hidden"
-              onClick={() => {
-                setIsDropdownOpen(false);
-                closeMenu();
-              }}
+              className={({ isActive }) =>
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base lg:hidden ${
+                  isActive
+                    ? "text-navblue bg-navbg"
+                    : "text-navWhite hover:bg-navbg"
+                }`
+              }
+              onClick={closeMenu}
             >
               BLOGS
             </NavLink>
             <NavLink
               to="/resources/careers"
-              className="block px-4 py-2 text-sm hover:bg-gray-800 text-navWhite rounded-md cursor-pointer font-semibold lg:hidden"
-              onClick={() => {
-                setIsDropdownOpen(false);
-                closeMenu();
-              }}
+              className={({ isActive }) =>
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base lg:hidden ${
+                  isActive
+                    ? "text-navblue bg-navbg"
+                    : "text-navWhite hover:bg-navbg"
+                }`
+              }
+              onClick={closeMenu}
             >
               CAREERS
+            </NavLink>
+            <NavLink
+              to="/contact-us"
+              className={({ isActive }) =>
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base lg:hidden ${
+                  isActive
+                    ? "text-navblue bg-navbg"
+                    : "text-navWhite hover:bg-navbg"
+                }`
+              }
+              onClick={closeMenu}
+            >
+              Contact Us
             </NavLink>
             <div
               className="relative"
@@ -252,7 +276,7 @@ const Header = () => {
             </div>
             <Link
               to="/contact-us"
-              className={` ${
+              className={`hidden lg:block ${
                 isMenuOpen
                   ? "text-navWhite over:bg-navbg font-semibold ms-4"
                   : "px-4 py-2 text-white font-semibold transition md:text-lg lg:text-sm xl:text-base bg-[#0039EF] rounded-[4px]"
