@@ -139,24 +139,44 @@ const BlogList = ({ refresh }) => {
     return isFeatured ? "bg-green-500 text-white" : "bg-red-500 text-white";
   };
 
-  const handleStatusClick = async (slug, currentStatus) => {
-    if (!slug || currentStatus === undefined) {
-      console.error("Invalid slug or status");
-      return;
-    }
-    try {
-      await axios.patch(
-        `${API_BASE_URL}/api/v1/admin/toggle/b/${slug}`, // Use `slug` directly
-        {
-          isFeatured: !currentStatus, // Toggle the current status
-        },
-        { withCredentials: true } // Ensure that credentials are sent if needed
-      );
-      fetchBlogs(); // Refresh the blog list
-    } catch (error) {
-      console.error("Error updating blog:", error);
-    }
-  };
+const handleStatusClick = async (slug, currentStatus) => {
+  if (!slug || currentStatus === undefined) {
+    console.error("Invalid slug or status");
+    return;
+  }
+
+  const updatedStatus = !currentStatus;
+  
+  // Optimistic UI Update: Update the blog's status immediately in the UI
+  setBlogs((prevBlogs) =>
+    prevBlogs.map((blog) =>
+      blog.slug === slug ? { ...blog, isFeatured: updatedStatus } : blog
+    )
+  );
+
+  // Loading state can also be managed by setting a specific loading flag for the current blog, if desired.
+
+  try {
+    await axios.patch(
+      `${API_BASE_URL}/api/v1/admin/toggle/b/${slug}`,
+      {
+        isFeatured: updatedStatus,
+      },
+      { withCredentials: true }
+    );
+    fetchBlogs(); // Refresh the blog list to ensure the correct data is displayed after the update
+  } catch (error) {
+    // Revert the status change in case of failure (in case of an error)
+    setBlogs((prevBlogs) =>
+      prevBlogs.map((blog) =>
+        blog.slug === slug ? { ...blog, isFeatured: currentStatus } : blog
+      )
+    );
+    console.error("Error updating blog:", error);
+    toast.error("Error updating blog status");
+  }
+};
+
 
   return (
     <div className="p-4 text-sm">
