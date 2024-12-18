@@ -6,6 +6,7 @@ import Article4Image from "../../assets/images/Article4.png";
 import Article5Image from "../../assets/images/Article5.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const ArticleGrid = () => {
   const [blogs, setBlogs] = useState([]);
@@ -13,7 +14,7 @@ const ArticleGrid = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/blogs", {
+      const response = await axios.get(`${API_BASE_URL}/api/v1/blogs`, {
         // withCredentials: true,
       });
       console.log(response.data.data);
