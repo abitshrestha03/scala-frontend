@@ -44,7 +44,7 @@ const BlogList = ({ refresh }) => {
       console.log(response);
       console.log(response.data.data);
       console.log(response.data.data.blogs);
-      setBlogs(response.data.data.blogs);
+      setBlogs(response?.data?.data?.blogs);
     } catch (error) {
       console.error("Error fetching blogs:", error);
     }
@@ -234,7 +234,7 @@ const BlogList = ({ refresh }) => {
                 <td className="py-3 px-4">
                   <button
                     className={`px-3 py-1 rounded-sm text-xs font-medium text-center ${getStatusStyle(
-                      blog.isFeatured
+                      blog?.isFeatured
                     )} max-w-full truncate cursor-pointer`}
                     onClick={() =>
                       handleStatusClick(blog?.slug, blog?.isFeatured)
@@ -414,7 +414,7 @@ const BlogList = ({ refresh }) => {
                   <input
                     type="checkbox"
                     name="isFeatured"
-                    checked={editBlog.isFeatured}
+                    checked={editBlog?.isFeatured}
                     onChange={(e) =>
                       setEditBlog({ ...editBlog, isFeatured: e.target.checked })
                     }
