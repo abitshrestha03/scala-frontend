@@ -9,15 +9,21 @@ import axios from "axios";
 
 const ArticleGrid = () => {
   const [blogs, setBlogs] = useState([]);
-
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("https://scala-backend-y102.onrender.com/api/v1/blogs", {
+      const response = await axios.get("http://localhost:8000/api/v1/blogs", {
         // withCredentials: true,
       });
       console.log(response.data.data);
       setBlogs(response.data.data.blogs);
+
+      const uniqueCategories = [
+        "All",
+        ...new Set(response.data.data.blogs.map((blog) => blog.category)),
+      ];
+      setCategories(uniqueCategories);
     } catch (error) {
       console.error("Error fetching blogs:", error);
     }
@@ -66,15 +72,15 @@ const ArticleGrid = () => {
 
   // Filtered Articles Based on Category
   const filteredArticles =
-    selectedCategory === "All"
-      ? articles
-      : articles.filter((article) => article.category === selectedCategory);
+  selectedCategory === "All"
+    ? blogs
+    : blogs.filter((article) => article.category === selectedCategory);
 
   return (
     <div className="text-white min-h-screen ms:px-6 md:px-4 lg:px-20 xl:px-32 mt-12">
       <h1 className="text-4xl text-center font-bold">All Articles</h1>
       <div className="flex flex-wrap ms:gap-2 md:gap-4 mb-6 mt-4">
-        {["All", "Category 1", "Category 2", "Category 3"].map((category) => (
+        {categories.map((category) => (
           <button
             key={category}
             className={`ms:px-3 ms:py-1 md:px-4 md:py-2 rounded-lg text-sm font-semibold transition`}
@@ -97,7 +103,7 @@ const ArticleGrid = () => {
         ))}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogs.map((article) => (
+        {filteredArticles.map((article) => (
           <Link key={article._id} to={`${article.slug}`}>
             <div className="bg-[#1e293b] rounded-lg shadow-md overflow-hidden">
               <div className="h-[55vh] w-full overflow-hidden">
