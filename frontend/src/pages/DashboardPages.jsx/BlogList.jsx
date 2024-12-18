@@ -335,7 +335,7 @@ const BlogList = ({ refresh }) => {
                       author: { ...editBlog.author, name: e.target.value },
                     })
                   }
-                  className="border border-gray-300 p-2 rounded-md text-xs"
+                  className="border border-gray-300 p-2 rounded-md text-xs bg-gray-200"
                   placeholder="Enter author name"
                 />
               </div>
