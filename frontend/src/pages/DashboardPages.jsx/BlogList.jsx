@@ -294,28 +294,28 @@ const BlogList = ({ refresh }) => {
                   placeholder="Enter blog title"
                 />
               </div>
-          <div className="space-y-2 flex flex-col">
-                <label
-                  htmlFor="edit-category"
-                  className="font-semibold text-xs"
-                >
-                  Blog Category
+              <div className="space-y-2 flex flex-col">
+                <label htmlFor="category" className="font-semibold text-xs">
+                  Category
                 </label>
-                <input
-                  type="text"
-                  id="edit-category"
+                <select
+                  id="category"
                   name="category"
                   value={editBlog.category}
-                  onChange={(e) =>
-                    setEditBlog({
-                      ...editBlog,
-                      category: e.target.value, // Update the category with the new value
-                    })
+                  onChange={
+                    (e) =>
+                      setEditBlog({ ...editBlog, category: e.target.value }) // Use e.target.value
                   }
                   className="border border-gray-300 p-2 rounded-md text-xs"
-                  placeholder="Enter blog category"
-                />
-              </div>
+                >
+                  <option value="">Select a category</option>
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>{" "}
               <div className="space-y-2 flex flex-col">
                 <label
                   htmlFor="edit-author-name"
@@ -408,29 +408,7 @@ const BlogList = ({ refresh }) => {
                   </div>
                 )}
               </div>
-              <div className="space-y-2 flex flex-col">
-                <label htmlFor="category" className="font-semibold text-xs">
-                  Category
-                </label>
-                <select
-                  id="category"
-                  name="category"
-                  value={editBlog.category}
-                  onChange={
-                    (e) =>
-                      setEditBlog({ ...editBlog, category: e.target.value }) // Use e.target.value
-                  }
-                  className="border border-gray-300 p-2 rounded-md text-xs"
-                >
-                  <option value="">Select a category</option>
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>{" "}
-              <br />
+      
               <div className="space-y-2">
                 <label className="font-semibold text-xs flex items-center">
                   <input
