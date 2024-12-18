@@ -1,4 +1,5 @@
 import FeaturedArticleImage from "../../assets/images/FeaturedArticle1.png";
+import Button from "../Button";
 
 const FeaturedArticle = () => {
   return (
