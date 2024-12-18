@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { toast, ToastContainer } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toastify
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+console.log(API_BASE_URL);
 
 const BlogList = ({ refresh }) => {
   const [files, setFiles] = useState([]);
@@ -40,6 +41,7 @@ const BlogList = ({ refresh }) => {
         `${API_BASE_URL}/api/v1/admin/blog`,
         { withCredentials: true }
       );
+      console.log(response);
       console.log(response.data.data);
       console.log(response.data.data.blogs);
       setBlogs(response.data.data.blogs);
