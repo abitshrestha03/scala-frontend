@@ -140,6 +140,10 @@ const BlogList = ({ refresh }) => {
   };
 
   const handleStatusClick = async (slug, currentStatus) => {
+    if (!slug || currentStatus === undefined) {
+      console.error("Invalid slug or status");
+      return;
+    }
     try {
       await axios.patch(
         `${API_BASE_URL}/api/v1/admin/toggle/b/${slug}`, // Use `slug` directly
