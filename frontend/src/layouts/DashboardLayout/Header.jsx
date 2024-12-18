@@ -21,21 +21,21 @@ const Header = () => {
 
     const response=await axios.get(`${API_BASE_URL}/api/v1/admin/logout`);
     console.log(response);
-    // if(response.data.success){
-    //   logout();
-    //   localStorage.removeItem("user");
+    if(response.data.success){
+      logout();
+      localStorage.removeItem("user");
   
-    //   // Optionally, update state or redirect after logout
-    //   setUsername("");
-    //   setEmail("");
+      // Optionally, update state or redirect after logout
+      setUsername("");
+      setEmail("");
   
-    //   // Close the popup
-    //   togglePopup();
+      // Close the popup
+      togglePopup();
   
-    //    navigate('/signin');
-    // }else{
-    //   toast.error("Error while logging out.");
-    // }
+       navigate('/signin');
+    }else{
+      toast.error("Error while logging out.");
+    }
   };
 
   useEffect(() => {
