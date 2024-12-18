@@ -30,11 +30,7 @@ const FeaturedArticle = () => {
               out more articles below.
             </p>
             <a
-              href="#"
-              className="inline-block bg-blue-600 text-white text-sm font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition"
-            >
-              Read More
-            </a>
+            <Button text="Read More" />
           </div>
           {/* Right Image */}
           <div className="flex justify-end">
