@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Button from "../Button";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+import { Link } from "react-router-dom";
 
 const FeaturedArticles = () => {
   const [articles, setArticles] = useState([]);
