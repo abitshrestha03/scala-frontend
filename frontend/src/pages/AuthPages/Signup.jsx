@@ -70,6 +70,7 @@ const SignupPage = () => {
               className="w-full px-4 py-2 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Username . . ."
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
@@ -86,6 +87,7 @@ const SignupPage = () => {
               className="w-full px-4 py-2 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="you@example.com"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
@@ -102,6 +104,7 @@ const SignupPage = () => {
               className="w-full px-4 py-2 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Enter your password"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
@@ -118,6 +121,7 @@ const SignupPage = () => {
               className="w-full px-4 py-2 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Confirm your password"
               onChange={handleChange}
+              required
             />
           </div>
           <button
