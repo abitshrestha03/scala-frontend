@@ -39,9 +39,9 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(false);
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>; // Optional loading state
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>; // Optional loading state
+  // }
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
