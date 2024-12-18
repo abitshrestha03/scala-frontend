@@ -34,7 +34,7 @@ export const signIn = async (formData) => {
 // api-client.js
 export const validateToken = async () => {
   const response = await axios.get(
-    `{API_BASE_URL}/api/v1/admin/get-admin`,
+    `${API_BASE_URL}/api/v1/admin/get-admin`,
     {
       withCredentials: true,
     }
