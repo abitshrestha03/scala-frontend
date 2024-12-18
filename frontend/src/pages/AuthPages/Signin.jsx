@@ -42,16 +42,16 @@ const SigninPage = () => {
       };
 
       localStorage.setItem("user", JSON.stringify(userData));
-      // await signIn(formData);
-      // if (response?.data?.data?.role === "ADMIN") {
-      //   toast.success("Signin successfully!");
-      //   login();
-      //   navigate("/dashboard");
-      // } else if(response.data?.isOtpRequired){
-      //   navigate("/otp-login", {
-      //       state: { email: formData.email, username: response?.data?.data?.username },
-      //   });
-      // }
+      await signIn(formData);
+      if (response?.data?.data?.role === "ADMIN") {
+        toast.success("Signin successfully!");
+        login();
+        navigate("/dashboard");
+      } else if(response.data?.isOtpRequired){
+        navigate("/otp-login", {
+            state: { email: formData.email, username: response?.data?.data?.username },
+        });
+      }
     } catch (error) {
       console.error(error);
       // Handle invalid email/password error
