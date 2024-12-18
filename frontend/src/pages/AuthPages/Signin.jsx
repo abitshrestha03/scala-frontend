@@ -16,6 +16,7 @@ const SigninPage = () => {
     role: "ADMIN",
   });
   const { login } = useAuth();
+  const [isSigningIn,setIsSigningIn] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -23,6 +24,8 @@ const SigninPage = () => {
   };
 
   const handleSubmit = async (e) => {
+    if(isSigningIn) return;
+    setIsSigningIn(true);
     e.preventDefault();
     try {
       const response = await axios.post(
@@ -64,6 +67,9 @@ const SigninPage = () => {
       } else {
         toast.error("An error occurred. Please try again.");
       }
+    }
+    finally{
+      setIsSigningIn(false);
     }
   };
 
@@ -131,9 +137,9 @@ const SigninPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-navblue text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200"
+            className={`w-full bg-navblue text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200 ${isSigningIn ? 'cursor-not-allowed opacity-50' : ''}`}
           >
-            Signin
+            {isSigningIn?"Signing . . .":"Signin"}
           </button>
         </form>
         <p className="text-sm text-gray-600 text-center mt-4">
