@@ -107,7 +107,7 @@ const ArticleGrid = () => {
         {filteredArticles.map((article) => (
           <Link key={article._id} to={`${article.slug}`}>
             <div className="bg-[#1e293b] rounded-lg shadow-md overflow-hidden">
-              <div className="h-[55vh] w-full overflow-hidden">
+              <div className="ms:h-[40vh] md:h-[55vh] w-full overflow-hidden">
                 {" "}
                 {/* Wrap the image in a fixed-height div */}
                 <img
