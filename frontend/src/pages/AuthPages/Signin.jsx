@@ -7,6 +7,7 @@ import { useAuth } from "../../Context/AuthContext";
 import NavLogo from "../../assets/images/NavLogo.svg";
 // import { signIn } from "../../api-client";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+console.log(API_BASE_URL);
 
 const SigninPage = () => {
   const navigate = useNavigate();
@@ -16,7 +17,9 @@ const SigninPage = () => {
     role: "ADMIN",
   });
   const { login } = useAuth();
+
   const [isSigningIn,setIsSigningIn] = useState(false);
+
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -53,8 +56,9 @@ const SigninPage = () => {
         navigate("/otp-login", {
           state: {
             email: formData.email,
-            password:formData.password,
             username: response?.data?.data?.username,
+            password:formData.password,
+            role:formData.role,
           },
         });
       }
@@ -68,8 +72,7 @@ const SigninPage = () => {
       } else {
         toast.error("An error occurred. Please try again.");
       }
-    }
-    finally{
+    }finally{
       setIsSigningIn(false);
     }
   };
@@ -141,7 +144,7 @@ const SigninPage = () => {
             className={`w-full bg-navblue text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200 ${isSigningIn ? 'cursor-not-allowed opacity-50' : ''}`}
           >
             {isSigningIn?"Signing . . .":"Signin"}
-          </button>
+            </button>
         </form>
         <p className="text-sm text-gray-600 text-center mt-4">
           Already have an account?{" "}
