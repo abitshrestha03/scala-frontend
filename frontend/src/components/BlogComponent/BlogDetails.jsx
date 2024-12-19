@@ -115,7 +115,7 @@ const BlogDetails = () => {
           }}
         >
         </p>
-        <img src={blogs?.image} className="ms:w-full h-auto md:w-[34vw] lg:h-[50vh]" alt="" />
+        <img src={blogs?.image} className="ms:w-full h-auto md:w-[34vw] md:h-[50vh]" alt="" />
         {/* <p className="text-gray-300 mt-2 mb-4">{blog.imgTitle}</p> */}
         {/* <p className="text-gray-300">{blog.imgDescription}</p> */}
         <div className="text-white mt-4 font-sans">
