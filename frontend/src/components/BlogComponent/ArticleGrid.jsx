@@ -80,7 +80,7 @@ const ArticleGrid = () => {
   return (
     <div className="text-white min-h-screen ms:px-6 md:px-4 lg:px-20 xl:px-32 mt-12">
       <h1 className="text-4xl text-center font-bold">All Articles</h1>
-      <div className="flex flex-wrap ms:gap-2 md:gap-4 mb-6 mt-4">
+      <div className="flex whitespace-no-wrap overflow-x-auto ms:gap-2 md:gap-4 mb-6 mt-4">
         {categories.map((category) => (
           <button
             key={category}

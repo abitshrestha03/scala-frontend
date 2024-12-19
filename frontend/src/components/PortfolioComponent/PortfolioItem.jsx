@@ -41,7 +41,7 @@ const PortfolioItem = () => {
 
   return (
     <div className="text-white py-12 ms:px-6 md:px-8 lg:px-20 xl:px-32 mb-20">
-      <div className="flex flex-wrap ms:gap-2 md:gap-4 mb-6">
+      <div className="flex whitespace-nowrap overflow-x-auto ms:gap-2 md:gap-4 mb-6">
           {[
             "All",
             "AI/ML",
