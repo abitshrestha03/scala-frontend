@@ -69,17 +69,17 @@ const JobCard = ({
         onMouseLeave={handleMouseLeaveWithStyle}
       >
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-xl font-bold">
+          <h3 className="ms:text-sm md:text-xl font-bold">
             {title} ({count})
           </h3>
-          <p className="text-sm flex gap-2 font-normal">
+          <p className="ms:text-[14px] md:text-sm flex gap-2 font-normal">
             {location}
             <LocationIcon />
           </p>
         </div>
         <div className="flex justify-between items-center mb-2">
           <p className="text-sm mb-2">{role}</p>
-          <p className="text-sm mb-4 flex gap-2 font-normal">
+          <p className="ms:text-[14px] md:text-sm mb-4 flex gap-2 font-normal">
             {date}
             <ClockIcon />
           </p>
