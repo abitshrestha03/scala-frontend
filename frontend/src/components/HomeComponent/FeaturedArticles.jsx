@@ -6,8 +6,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Button from "../Button";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 import { Link } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const FeaturedArticles = () => {
   const [articles, setArticles] = useState([]);
@@ -18,7 +18,7 @@ const FeaturedArticles = () => {
         const response = await axios.get(`${API_BASE_URL}/api/v1/blogs`);
         console.log(response);
         const blogs = response.data?.data?.blogs || [];
-        const featuredArticles = blogs.filter(blog => blog.isFeatured);
+        const featuredArticles = blogs.filter((blog) => blog.isFeatured);
         setArticles(featuredArticles);
       } catch (error) {
         console.error("Error fetching featured articles", error);
@@ -67,7 +67,7 @@ const FeaturedArticles = () => {
                     <img
                       src={article.image} // Assuming 'image' is returned in the API
                       alt={article.title}
-                      className="mb-4 w-full h-auto sm:h-[200px] md:h-[250px] lg:h-[273px] object-cover"
+                      className="mb-4 w-full h-auto sm:h-[200px] md:h-[250px] lg:h-[50vh] object-cover"
                     />
                     <div className="px-4 flex flex-col">
                       <span className="text-sm text-white bg-[#003DFF40] px-2 py-1 rounded self-start">
