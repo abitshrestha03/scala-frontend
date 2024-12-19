@@ -159,7 +159,6 @@ const Header = () => {
                 }`
               }
               onClick={closeMenu}
-
             >
               PORTFOLIO
             </NavLink>
@@ -200,7 +199,7 @@ const Header = () => {
               }
               onClick={closeMenu}
             >
-              Contact Us
+              CONTACT US
             </NavLink>
             <div
               className="relative"
