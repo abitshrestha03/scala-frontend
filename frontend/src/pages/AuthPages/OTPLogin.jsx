@@ -1,17 +1,20 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const OTPLogin = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const email = location.state?.email || ""; // Get the email from navigation state
+  const password = location.state?.password || ""; // Get the email from navigation state
+  const role = location.state?.role|| ""; // Get the email from navigation state
   const username=location.state?.username || ""; 
   const [otp, setOtp] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {login}=useAuth();
+  const [isResending, setIsResending] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,6 +50,25 @@ const OTPLogin = () => {
       alert("Invalid OTP. Please try again.");
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  
+  const handleResendOTP = async () => {
+    if(isResending) return;
+    setIsResending(true);
+    console.log(email,password,role);
+    try {
+      await axios.post(
+        `${API_BASE_URL}/api/v1/admin/login`,
+        { email,password,role },
+      );
+      alert("OTP resent successfully!Check your email.");
+    } catch (error) {
+      console.error("Resend OTP failed:", error);
+      alert("Failed to resend OTP. Please try again.");
+    }finally{
+      setIsResending(false);
     }
   };
 
@@ -92,10 +114,11 @@ const OTPLogin = () => {
         <p className="text-sm text-gray-600 text-center mt-6">
           Didn't receive the code?{" "}
           <button
-            onClick={() => alert("Resend OTP functionality here")}
-            className="text-indigo-500 hover:underline"
+            onClick={handleResendOTP}
+            className={`text-indigo-500 hover:underline ${isResending ? "opacity-50 hover:no-underline" : "opacity-100"}`}
+            disabled={isResending}
           >
-            Resend OTP
+            {isResending? "Resending . . .":"Resend OTP"}
           </button>
         </p>
       </div>
@@ -104,3 +127,4 @@ const OTPLogin = () => {
 };
 
 export default OTPLogin;
+
