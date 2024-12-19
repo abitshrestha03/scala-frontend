@@ -14,7 +14,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
   // const [image, setImage] = useState("");
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedImageUrl,setSelectedImageUrl]=useState("");
+  const [selectedImageUrl, setSelectedImageUrl] = useState("");
 
   const categories = [
     "PRODUCT UPDATES",
@@ -34,12 +34,12 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
 
   const onDrop = useCallback((acceptedFiles) => {
     setFiles(acceptedFiles);
-    if(acceptedFiles.length>0){
-      const file=acceptedFiles[0];
-      const reader=new FileReader();
-      reader.onloadend=()=>{
+    if (acceptedFiles.length > 0) {
+      const file = acceptedFiles[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
         setSelectedImageUrl(reader.result);
-      }
+      };
       reader.readAsDataURL(file);
     }
   }, []);
@@ -249,11 +249,26 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
         )}
       </div>
       {selectedImageUrl && (
-        <div className="flex w-full">
-          <img src={selectedImageUrl} alt="Selected Preview" className="max-w-[200px] h-[10vh] rounded" />
+        <div className="relative max-w-[200px] flex">
+          <img
+            src={selectedImageUrl}
+            alt="Selected Preview"
+            className="w-full h-[10vh] rounded"
+          />
+          <button
+            type="button"
+            onClick={() => {
+              setSelectedImageUrl("");
+              setFiles([]); // Clear the selected files
+            }}
+            className="absolute top-1 right-2 text-white rounded-full w-6 h-6 flex items-center justify-center transform translate-x-2 translate-y-[-2px]"
+            aria-label="Remove Image"
+          >
+            ✕
+          </button>
         </div>
       )}
-      <div className="space-y-2">
+      <div className="space-y-2 flex flex-col col-span-2">
         <label className="font-semibold text-xs flex items-center">
           <input
             type="checkbox"

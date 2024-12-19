@@ -18,6 +18,7 @@ const BlogList = ({ refresh }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [blogToDelete, setBlogToDelete] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [selectedImageUrl, setSelectedImageUrl] = useState("");
 
   const categories = [
     "PRODUCT UPDATES",
@@ -28,9 +29,16 @@ const BlogList = ({ refresh }) => {
     "OTHERS",
   ];
 
-
   const onDrop = useCallback((acceptedFiles) => {
     setFiles(acceptedFiles);
+    if (acceptedFiles.length > 0) {
+      const file = acceptedFiles[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImageUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -86,6 +94,11 @@ const BlogList = ({ refresh }) => {
     setEditBlog(blog);
     setShowEditModal(true);
   };
+
+  const togglePopup = () => {
+    setShowEditModal(!showEditModal);
+  };
+
 
   const handleEditSubmit = async (updatedBlog) => {
     setLoading(true);
@@ -294,15 +307,24 @@ const BlogList = ({ refresh }) => {
       </div>
       {/* Edit Modal */}
       {showEditModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50">
-          <div className="shadow-md">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="shadow-md relative">
             <form
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-6 overflow-y-auto flex-grow border border-gray-300 rounded-lg bg-white shadow-md"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[90vh] px-6 py-6 overflow-y-auto flex-grow border border-gray-300 rounded-lg bg-white shadow-md"
               onSubmit={(e) => {
                 e.preventDefault();
                 handleEditSubmit(editBlog);
               }}
             >
+              <button
+                onClick={togglePopup}
+                className="absolute top-0 right-2 text-red-500 font-normal rounded-full px-1 py-1 hover:text-gray-700 text-3xl w-10 h-10 z-50"
+              >
+                &times;
+              </button>
+              <div className="space-y-2 flex flex-col col-span-2">
+                <h2 className="font-bold text-2xl">Edit Blogs</h2>
+              </div>
               <div className="space-y-2 flex flex-col">
                 <label htmlFor="edit-title" className="font-semibold text-xs">
                   Blog Title
@@ -471,30 +493,50 @@ const BlogList = ({ refresh }) => {
                   </div>
                 )}
               </div>
-              <div className="space-y-2 flex flex-col">
-                <label htmlFor="category" className="font-semibold text-xs">
-                  Category
-                </label>
-                <select
-                  id="category"
-                  name="category"
-                  value={editBlog.category}
-                  onChange={
-                    (e) =>
-                      setEditBlog({ ...editBlog, category: e.target.value }) 
-                  }
-                  className="border border-gray-300 p-2 rounded-md text-xs"
-                >
-                  <option value="">Select a category</option>
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>{" "}
+              <div className="relative max-w-[200px] space-y-2 flex flex-col col-span-2">
+                {/* Display existing image if available */}
+                {editBlog?.image && !selectedImageUrl && (
+                  <div>
+                    <img
+                      src={editBlog.image}
+                      alt="Existing Image"
+                      className="w-full h-[10vh] rounded"
+                    />
+                    <p className="text-xs text-gray-500">Previous Image</p>
+                  </div>
+                )}
+
+                {/* Display selected image preview if a new image is uploaded */}
+                {selectedImageUrl && (
+                  <div>
+                    <img
+                      src={selectedImageUrl}
+                      alt="Selected Preview"
+                      className="w-full h-[10vh] rounded"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Selected image preview
+                    </p>
+                  </div>
+                )}
+
+                {/* Remove button for the new image */}
+                {selectedImageUrl && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedImageUrl("");
+                      setFiles([]); // Clear the selected files
+                    }}
+                    className="absolute -top-1 right-2 text-white rounded-full w-6 h-6 flex items-center justify-center transform translate-x-2 translate-y-[-2px]"
+                    aria-label="Remove Image"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
               <br />
-              <div className="space-y-2">
+              <div className="space-y-2 flex flex-col col-span-2">
                 <label className="font-semibold text-xs flex items-center">
                   <input
                     type="checkbox"
