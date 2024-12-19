@@ -8,6 +8,7 @@ import Article2Image from "../../assets/images/Article2.png";
 import Article3Image from "../../assets/images/Article3.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import DOMPurify from "dompurify";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const BlogDetails = () => {
@@ -106,7 +107,14 @@ const BlogDetails = () => {
             <span className="text-white">{blogs.author?.name}</span>
           </p>
         </div>
-        <p className="text-gray-300 mb-6">{blogs?.content}</p>
+
+        <p
+          className="text-gray-300 mb-6"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(blogs?.content),
+          }}
+        >
+        </p>
         <img src={blogs?.image} className="w-[34vw] h-[50vh]" alt="" />
         {/* <p className="text-gray-300 mt-2 mb-4">{blog.imgTitle}</p> */}
         {/* <p className="text-gray-300">{blog.imgDescription}</p> */}
@@ -187,7 +195,7 @@ const BlogDetails = () => {
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-48 object-cover rounded-t-lg"
+                    className="w-full h-[50vh] object-cover rounded-t-lg"
                   />
                   <div className="mt-4 px-4 pb-4">
                     <p className="text-sm text-blue-400">{article.category}</p>
