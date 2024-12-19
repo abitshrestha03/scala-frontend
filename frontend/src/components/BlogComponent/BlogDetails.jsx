@@ -115,7 +115,7 @@ const BlogDetails = () => {
           }}
         >
         </p>
-        <img src={blogs?.image} className="w-[34vw] h-[50vh]" alt="" />
+        <img src={blogs?.image} className="ms:w-full h-auto lg:w-[34vw] lg:h-[50vh]" alt="" />
         {/* <p className="text-gray-300 mt-2 mb-4">{blog.imgTitle}</p> */}
         {/* <p className="text-gray-300">{blog.imgDescription}</p> */}
         <div className="text-white mt-4 font-sans">
@@ -192,10 +192,10 @@ const BlogDetails = () => {
                     borderImageSlice: 1,
                   }}
                 >
-                  <img
+                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-[50vh] object-cover rounded-t-lg"
+                    className="w-full ms:h-[45vh] lg:h-[50vh] object-cover rounded-t-lg"
                   />
                   <div className="mt-4 px-4 pb-4">
                     <p className="text-sm text-blue-400">{article.category}</p>
