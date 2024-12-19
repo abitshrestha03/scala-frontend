@@ -195,7 +195,7 @@ const BlogDetails = () => {
                    <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full ms:h-[45vh] lg:h-[50vh] object-cover rounded-t-lg"
+                    className="w-full ms:h-[40vh] lg:h-[50vh] object-cover rounded-t-lg"
                   />
                   <div className="mt-4 px-4 pb-4">
                     <p className="text-sm text-blue-400">{article.category}</p>
