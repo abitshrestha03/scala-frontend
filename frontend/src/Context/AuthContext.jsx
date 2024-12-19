@@ -40,7 +40,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>; // Optional loading state
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 h-screen">
+        <div className="loader"></div> 
+      </div>
+    );
   }
 
   return (
