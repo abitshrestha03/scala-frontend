@@ -3,10 +3,12 @@ import { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { UploadCloud } from "lucide-react";
 import PropTypes from "prop-types";
-import { toast, ToastContainer } from "react-toastify"; // Import Toastify
+import { toast } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toastify
+import DOMPurify from "dompurify";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
-console.log(API_BASE_URL);
 
 const BlogList = ({ refresh }) => {
   const [files, setFiles] = useState([]);
@@ -26,6 +28,7 @@ const BlogList = ({ refresh }) => {
     "OTHERS",
   ];
 
+
   const onDrop = useCallback((acceptedFiles) => {
     setFiles(acceptedFiles);
   }, []);
@@ -38,10 +41,9 @@ const BlogList = ({ refresh }) => {
   const fetchBlogs = async () => {
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/api/v1/admin/blog`,
+        `http://localhost:8000/api/v1/admin/blog`,
         { withCredentials: true }
       );
-      console.log(response);
       console.log(response.data.data);
       console.log(response.data.data.blogs);
       setBlogs(response?.data?.data?.blogs);
@@ -139,44 +141,41 @@ const BlogList = ({ refresh }) => {
     return isFeatured ? "bg-green-500 text-white" : "bg-red-500 text-white";
   };
 
-const handleStatusClick = async (slug, currentStatus) => {
-  if (!slug || currentStatus === undefined) {
-    console.error("Invalid slug or status");
-    return;
-  }
+  const handleStatusClick = async (slug, currentStatus) => {
+    if (!slug || currentStatus === undefined) {
+      console.error("Invalid slug or status");
+      return;
+    }
 
-  const updatedStatus = !currentStatus;
-  
-  // Optimistic UI Update: Update the blog's status immediately in the UI
-  setBlogs((prevBlogs) =>
-    prevBlogs.map((blog) =>
-      blog.slug === slug ? { ...blog, isFeatured: updatedStatus } : blog
-    )
-  );
+    const updatedStatus = !currentStatus;
 
-  // Loading state can also be managed by setting a specific loading flag for the current blog, if desired.
-
-  try {
-    await axios.patch(
-      `${API_BASE_URL}/api/v1/admin/toggle/b/${slug}`,
-      {
-        isFeatured: updatedStatus,
-      },
-      { withCredentials: true }
-    );
-    fetchBlogs(); // Refresh the blog list to ensure the correct data is displayed after the update
-  } catch (error) {
-    // Revert the status change in case of failure (in case of an error)
+    // Optimistic UI Update: Update the blog's status immediately in the UI
     setBlogs((prevBlogs) =>
       prevBlogs.map((blog) =>
-        blog.slug === slug ? { ...blog, isFeatured: currentStatus } : blog
+        blog.slug === slug ? { ...blog, isFeatured: updatedStatus } : blog
       )
     );
-    console.error("Error updating blog:", error);
-    toast.error("Error updating blog status");
-  }
-};
 
+    try {
+      await axios.patch(
+        `${API_BASE_URL}/api/v1/admin/toggle/b/${slug}`,
+        {
+          isFeatured: updatedStatus,
+        },
+        { withCredentials: true }
+      );
+      fetchBlogs(); // Refresh the blog list to ensure the correct data is displayed after the update
+    } catch (error) {
+      // Revert the status change in case of failure (in case of an error)
+      setBlogs((prevBlogs) =>
+        prevBlogs.map((blog) =>
+          blog.slug === slug ? { ...blog, isFeatured: currentStatus } : blog
+        )
+      );
+      console.error("Error updating blog:", error);
+      toast.error("Error updating blog status");
+    }
+  };
 
   return (
     <div className="p-4 text-sm">
@@ -250,7 +249,12 @@ const handleStatusClick = async (slug, currentStatus) => {
                 </td>
                 <td className="py-3 px-4">{index + 1}</td>
                 <td className="py-3 px-4">{blog.title}</td>
-                <td className="py-3 px-4">{blog.content}</td>
+                <td
+                  className="py-3 px-4"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(blog.content),
+                  }}
+                ></td>{" "}
                 <td className="py-3 px-4">{blog.author.name}</td>
                 <td className="py-3 px-4">{blog.author.role}</td>
                 <td className="py-3 px-4">{blog.category}</td>
@@ -261,7 +265,7 @@ const handleStatusClick = async (slug, currentStatus) => {
                       blog?.isFeatured
                     )} max-w-full truncate cursor-pointer`}
                     onClick={() =>
-                      handleStatusClick(blog?.slug, blog?.isFeatured)
+                      handleStatusClick(blog.slug, blog.isFeatured)
                     } // Pass slug and current status
                   >
                     {blog?.isFeatured ? "Featured" : "Not Featured"}
@@ -326,9 +330,11 @@ const handleStatusClick = async (slug, currentStatus) => {
                   id="category"
                   name="category"
                   value={editBlog.category}
-                  onChange={
-                    (e) =>
-                      setEditBlog({ ...editBlog, category: e.target.value }) // Use e.target.value
+                  onChange={(e) =>
+                    setEditBlog({
+                      ...editBlog,
+                      category: e.target.value, // Update the category with the new value
+                    })
                   }
                   className="border border-gray-300 p-2 rounded-md text-xs"
                 >
@@ -340,6 +346,28 @@ const handleStatusClick = async (slug, currentStatus) => {
                   ))}
                 </select>
               </div>{" "}
+              <div className="space-y-2 flex flex-col">
+                <label
+                  htmlFor="edit-category"
+                  className="font-semibold text-xs"
+                >
+                  Blog Category
+                </label>
+                <input
+                  type="text"
+                  id="edit-category"
+                  name="category"
+                  value={editBlog.category}
+                  onChange={(e) =>
+                    setEditBlog({
+                      ...editBlog,
+                      category: e.target.value, // Update the category with the new value
+                    })
+                  }
+                  className="border border-gray-300 p-2 rounded-md text-xs"
+                  placeholder="Enter blog category"
+                />
+              </div>
               <div className="space-y-2 flex flex-col">
                 <label
                   htmlFor="edit-author-name"
@@ -359,7 +387,7 @@ const handleStatusClick = async (slug, currentStatus) => {
                       author: { ...editBlog.author, name: e.target.value },
                     })
                   }
-                  className="border border-gray-300 p-2 rounded-md text-xs bg-gray-200"
+                  className="border border-gray-300 bg-gray-200 p-2 rounded-md text-xs"
                   placeholder="Enter author name"
                 />
               </div>
@@ -386,7 +414,7 @@ const handleStatusClick = async (slug, currentStatus) => {
                 <label htmlFor="content" className="font-semibold text-xs">
                   Blog Content
                 </label>
-                <textarea
+                {/* <textarea
                   id="edit-content"
                   type="text"
                   name="content"
@@ -396,11 +424,22 @@ const handleStatusClick = async (slug, currentStatus) => {
                   }
                   placeholder="Type Blog Content"
                   className="w-full min-h-[120px] border border-gray-300 p-2 rounded-md text-xs"
+                /> */}
+                <ReactQuill
+                  value={editBlog.content}
+                  onChange={(content) =>
+                    setEditBlog({
+                      ...editBlog,
+                      content: content,
+                    })
+                  }
+                  placeholder="Type Blog Content"
+                  className="w-full min-h-[20vh] text-xs"
                 />
               </div>
               <div
                 {...getRootProps()}
-                className={`w-full col-span-2 border-[1px] border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+                className={`w-full col-span-2 border-[1px] border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors mt-10 ${
                   isDragActive
                     ? "border-primary bg-primary/5"
                     : "border-[#003DFF]"
@@ -432,13 +471,35 @@ const handleStatusClick = async (slug, currentStatus) => {
                   </div>
                 )}
               </div>
-      
+              <div className="space-y-2 flex flex-col">
+                <label htmlFor="category" className="font-semibold text-xs">
+                  Category
+                </label>
+                <select
+                  id="category"
+                  name="category"
+                  value={editBlog.category}
+                  onChange={
+                    (e) =>
+                      setEditBlog({ ...editBlog, category: e.target.value }) 
+                  }
+                  className="border border-gray-300 p-2 rounded-md text-xs"
+                >
+                  <option value="">Select a category</option>
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>{" "}
+              <br />
               <div className="space-y-2">
                 <label className="font-semibold text-xs flex items-center">
                   <input
                     type="checkbox"
                     name="isFeatured"
-                    checked={editBlog?.isFeatured}
+                    checked={editBlog.isFeatured}
                     onChange={(e) =>
                       setEditBlog({ ...editBlog, isFeatured: e.target.checked })
                     }
@@ -498,7 +559,6 @@ const handleStatusClick = async (slug, currentStatus) => {
           </div>
         </div>
       )}
-      <ToastContainer />
     </div>
   );
 };
