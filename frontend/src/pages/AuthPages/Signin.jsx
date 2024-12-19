@@ -53,6 +53,7 @@ const SigninPage = () => {
         navigate("/otp-login", {
           state: {
             email: formData.email,
+            password:formData.password,
             username: response?.data?.data?.username,
           },
         });
