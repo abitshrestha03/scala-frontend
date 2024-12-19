@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { toast, ToastContainer } from "react-toastify"; // Import Toastify
+import { toast } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toastify
 import axios from "axios";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
@@ -127,7 +127,6 @@ const AdminTable = ({ refresh }) => {
           </div>
         </div>
       )}
-      <ToastContainer />
     </div>
   );
 };

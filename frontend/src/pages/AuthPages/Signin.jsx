@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify"; // Import Toastify
+import { toast } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toastify
 import { useAuth } from "../../Context/AuthContext";
 import NavLogo from "../../assets/images/NavLogo.svg";
@@ -153,7 +153,6 @@ const SigninPage = () => {
           </NavLink>
         </p>
       </div>
-      <ToastContainer />
     </div>
   );
 };

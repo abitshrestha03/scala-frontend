@@ -19,9 +19,10 @@ import CreateAdmin from "./pages/DashboardPages.jsx/CreateAdmin";
 import { useAuth } from "./Context/AuthContext";
 import ProtectedRoute from "./pages/DashboardPages.jsx/ProtectedRoute";
 import NotFoundPage from "./NotFoundPage";
+import { ToastContainer } from "react-toastify";
 const App = () => {
   const {isLoggedIn}=useAuth();
-  console.log("is logged in",isLoggedIn);
+  console.log(isLoggedIn);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -51,14 +52,6 @@ const App = () => {
       path: "/admins",
       element:<ProtectedRoute><DashboardLayout><CreateAdmin/></DashboardLayout></ProtectedRoute>,
     },
-    //    {
-    //   path: "/dashboard",
-    //   element:<DashboardLayout><Dashboard/></DashboardLayout>,
-    // },
-    // {
-    //   path: "/admins",
-    //   element:<DashboardLayout><CreateAdmin/></DashboardLayout>,
-    // },
     {
       path:"/about",
       element:<Layout><About/></Layout>
@@ -114,6 +107,7 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
+      <ToastContainer/>
     </>
   );
 };

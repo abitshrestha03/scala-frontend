@@ -2,8 +2,10 @@ import axios from "axios";
 import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { UploadCloud } from "lucide-react";
-import { toast, ToastContainer } from "react-toastify"; // Import Toastify
+import { toast } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Import default styles for Toastify
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 axios.defaults.withCredentials = true; // Enable cookies for all requests
@@ -12,6 +14,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
   // const [image, setImage] = useState("");
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedImageUrl,setSelectedImageUrl]=useState("");
 
   const categories = [
     "PRODUCT UPDATES",
@@ -22,8 +25,23 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
     "OTHERS",
   ];
 
+  const handleEditorChange = (value) => {
+    setBlog((prevBlog) => ({
+      ...prevBlog,
+      content: value,
+    }));
+  };
+
   const onDrop = useCallback((acceptedFiles) => {
     setFiles(acceptedFiles);
+    if(acceptedFiles.length>0){
+      const file=acceptedFiles[0];
+      const reader=new FileReader();
+      reader.onloadend=()=>{
+        setSelectedImageUrl(reader.result);
+      }
+      reader.readAsDataURL(file);
+    }
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -36,7 +54,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
       title: "",
       content: "",
       category: "",
-      author: { name: "Scala Technologies", role: "" }, 
+      author: { name: "Scala Technologies", role: "" },
       isFeatured: false,
       image: "",
     }
@@ -140,7 +158,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
           type: "text",
           placeholder: "Author Name",
           value: blog.author.name,
-          readOnly: true, // Make author name read-only
+          readOnly: true,
         },
         {
           label: "Author Role",
@@ -188,18 +206,24 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
         <label htmlFor="content" className="font-semibold text-xs">
           Blog Content
         </label>
-        <textarea
+        <ReactQuill
+          value={blog.content}
+          onChange={handleEditorChange}
+          placeholder="Type Blog Content"
+          className="w-full min-h-[40vh] text-xs"
+        />
+        {/* <textarea
           id="content"
           name="content"
           value={blog.content}
           onChange={handleChange}
           placeholder="Type Blog Content"
           className="w-full min-h-[120px] border border-gray-300 p-2 rounded-md text-xs"
-        />
+        /> */}
       </div>
       <div
         {...getRootProps()}
-        className={`w-full col-span-2 border-[1px] border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+        className={`w-full col-span-2 border-[1px] border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors mt-12 ${
           isDragActive ? "border-primary bg-primary/5" : "border-[#003DFF]"
         }`}
       >
@@ -224,6 +248,11 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
           </div>
         )}
       </div>
+      {selectedImageUrl && (
+        <div className="flex w-full">
+          <img src={selectedImageUrl} alt="Selected Preview" className="max-w-[200px] h-[10vh] rounded" />
+        </div>
+      )}
       <div className="space-y-2">
         <label className="font-semibold text-xs flex items-center">
           <input
@@ -244,7 +273,6 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
           {loading ? "Adding..." : "Add"}{" "}
         </button>
       </div>
-      <ToastContainer />
     </form>
   );
 };
