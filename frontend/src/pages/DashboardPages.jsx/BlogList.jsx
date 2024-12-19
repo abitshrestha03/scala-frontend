@@ -41,7 +41,7 @@ const BlogList = ({ refresh }) => {
   const fetchBlogs = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/v1/admin/blog`,
+        `${API_BASE_URL}/api/v1/admin/blog`,
         { withCredentials: true }
       );
       console.log(response.data.data);
