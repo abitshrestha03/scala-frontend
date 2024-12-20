@@ -1,4 +1,5 @@
 import Founder1 from "../../assets/images/Founder1.png";
+import Founder2 from "../../assets/images/Founder2.png";
 import { useRef } from "react";
 // import Button from "../Button";
 
@@ -6,18 +7,18 @@ const Slider = () => {
   const cards = [
     {
       name: "Yugant Basnet",
-      role: "CEO",
+      role: "Founder",
       description:
         "Scala-Tech is recognized as an innovation hub, leveraging AI and development expertise to create impactful solutions. Scala-Tech is a trusted partner for businesses seeking advanced AI solutions.",
       image: Founder1, // Replace with your image URL
     },
-    // {
-    //   name: "Ishan Gyawali",
-    //   role: "Founder",
-    //   description:
-    //     "Scala-Tech is recognized as an innovation hub, leveraging AI and development expertise to create impactful solutions. Scala-Tech is a trusted partner for businesses seeking advanced AI solutions.",
-    //   image: Founder2, // Replace with your image URL
-    // },
+    {
+      name: "Ishan Gyawali",
+      role: "Co-Founder",
+      description:
+        "Scala-Tech is recognized as an innovation hub, leveraging AI and development expertise to create impactful solutions. Scala-Tech is a trusted partner for businesses seeking advanced AI solutions.",
+      image: Founder2, // Replace with your image URL
+    },
     // {
     //   name: "John Doe",
     //   role: "CTO",
@@ -55,7 +56,7 @@ const Slider = () => {
                 "linear-gradient(107.07deg, rgba(0, 61, 255, 0.4) 0%, rgba(255, 255, 255, 0) 24.35%, #003DFF 28.89%, #003DFF 54.35%, rgba(255, 255, 255, 0) 85.72%, #003DFF 100.88%)",
               borderImageSlice: 1,
             }}
-            className="ms:pl-4 ms:pe-0 min-w-[100%] lg:min-w-[100%] lg:max-w-[100%] bg-gray-800 text-white rounded-lg shadow-lg lg:p-6 flex flex-row lg:flex-col items-start flex-shrink-0 snap-start cursor-pointer relative overflow-y-hidden"
+            className="ms:pl-4 ms:pe-0 min-w-[100%] lg:min-w-[80%] lg:max-w-[80%] bg-gray-800 text-white rounded-lg shadow-lg lg:p-6 flex flex-row lg:flex-col items-start flex-shrink-0 snap-start cursor-pointer relative overflow-y-hidden"
           >
             {/* Image on the left */}
             <div className="absolute ms:top-12 sm:top-5 -bottom-5 overflow-y-hidden ms:left-4 lg:left-20 transform translate-y-[-10px] -translate-x-[40px] flex-shrink-0">
