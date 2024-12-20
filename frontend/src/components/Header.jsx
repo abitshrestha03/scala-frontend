@@ -2,7 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Logo from "../assets/icons/Logo";
 import MobileLogo from "../assets/icons/MoblieLogo";
-
+import FacebookLogo from "../assets/images/FacebookFooter.png";
+import LinkedInLogo from "../assets/images/LinkedInFooter.png";
+import InstaFooter from "../assets/images/InstaFooter.png";
+import WhatsAppFooter from "../assets/images/WhatsAppFooter.png";
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -95,7 +98,7 @@ const Header = () => {
           <div
             className={`${
               isMenuOpen
-                ? "fixed right-0 top-0 bottom-0 h-[100vh] flex flex-col py-4 px-4"
+                ? "fixed right-0 left-0 top-0 bottom-0 h-[100vh] flex flex-col py-4 px-4"
                 : "flex-col items-center space-y-2 lg:flex lg:flex-row lg:space-y-0 lg:space-x-8 relative"
             }`}
             style={
@@ -107,13 +110,24 @@ const Header = () => {
                 : {}
             }
           >
-            <Link to="/" className={isMenuOpen ? "block mb-4" : "hidden"}>
-              <MobileLogo />
-            </Link>
+            <div
+              className={`flex justify-between items-center py-4 px-4 ${
+                isMenuOpen ? "block mb-4" : "hidden"
+              }`}
+            >
+              {/* Mobile Logo */}
+              <Link to="/">
+                <MobileLogo />
+              </Link>
+              {/* Close Button */}
+              <button className="text-white text-4xl" onClick={closeMenu}>
+                &times;
+              </button>
+            </div>
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base ${
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[20px] md:text-lg lg:text-sm xl:text-base ms:hidden lg:block ${
                   isActive
                     ? "text-navblue bg-navbg"
                     : "text-navWhite hover:bg-navbg"
@@ -126,7 +140,7 @@ const Header = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base ${
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[20px] md:text-lg lg:text-sm xl:text-base ms:hidden lg:block ${
                   isActive
                     ? "text-navblue bg-navbg"
                     : "text-navWhite hover:bg-navbg"
@@ -139,7 +153,7 @@ const Header = () => {
             <NavLink
               to="/services"
               className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base ${
+                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[20px] md:text-lg lg:text-sm xl:text-base ms:hidden lg:block ${
                   isActive
                     ? "text-navblue bg-navbg"
                     : "text-navWhite hover:bg-navbg"
@@ -149,71 +163,99 @@ const Header = () => {
             >
               SERVICES
             </NavLink>
-            <NavLink
-              to="/resources/portfolio"
-              className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base lg:hidden ${
-                  isActive
-                    ? "text-navblue bg-navbg"
-                    : "text-navWhite hover:bg-navbg"
-                }`
-              }
-              onClick={closeMenu}
-            >
-              PORTFOLIO
-            </NavLink>
-            <NavLink
-              to="/resources/blogs"
-              className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base lg:hidden ${
-                  isActive
-                    ? "text-navblue bg-navbg"
-                    : "text-navWhite hover:bg-navbg"
-                }`
-              }
-              onClick={closeMenu}
-            >
-              BLOGS
-            </NavLink>
-            <NavLink
-              to="/resources/careers"
-              className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base lg:hidden ${
-                  isActive
-                    ? "text-navblue bg-navbg"
-                    : "text-navWhite hover:bg-navbg"
-                }`
-              }
-              onClick={closeMenu}
-            >
-              CAREERS
-            </NavLink>
-            <NavLink
-              to="/contact-us"
-              className={({ isActive }) =>
-                `font-semibold py-2 px-4 lg:px-1 xl:px-3 rounded-sm ms:text-[14px] md:text-lg lg:text-sm xl:text-base lg:hidden ${
-                  isActive
-                    ? "text-navblue bg-navbg"
-                    : "text-navWhite hover:bg-navbg"
-                }`
-              }
-              onClick={closeMenu}
-            >
-              CONTACT US
-            </NavLink>
+            <div className="text-center text-white flex flex-col items-start space-y-2 font-semibold lg:hidden ml-20">
+              <NavLink
+                to="/"
+                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                onClick={closeMenu}
+              >
+                <span className="text-3xl">•</span> Home
+              </NavLink>
+              <NavLink
+                to="/about"
+                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                onClick={closeMenu}
+              >
+                <span className="text-3xl">•</span> About Us
+              </NavLink>
+              <NavLink
+                to="/services"
+                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                onClick={closeMenu}
+              >
+                <span className="text-3xl">•</span>   <span>Services</span>
+
+              </NavLink>
+              <NavLink
+                to="/resources/portfolio"
+                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                onClick={closeMenu}
+              >
+                <span className="text-3xl">•</span> Portfolio
+              </NavLink>
+              <NavLink
+                to="/resources/blogs"
+                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                onClick={closeMenu}
+              >
+                <span className="text-3xl">•</span> Blogs
+              </NavLink>
+              <NavLink
+                to="/resources/careers"
+                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base  flex items-center gap-x-2"
+                onClick={closeMenu}
+              >
+                <span className="text-3xl">•</span> Careers
+              </NavLink>
+              <NavLink
+                to="/contact-us"
+                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                onClick={closeMenu}
+              >
+                <span className="text-3xl">•</span> Contact Us
+              </NavLink>
+            </div>
+
+            <div className="mobile-footer lg:hidden text-white text-center mt-8">
+              <h4 className="text-[16px]">Reach Out</h4>
+              <a
+                href="mailto:infoscalatech@gmail.com"
+                className="text-[12px] underline"
+              >
+                infoscalatech@gmail.com
+              </a>
+              <div className="flex space-x-4 mt-2 justify-center">
+                <Link href="#" className="hover:text-blue-400">
+                  <img src={FacebookLogo} alt="Facebook" className="h-[20px]" />
+                </Link>
+                <Link href="#" className="hover:text-blue-400">
+                  <img src={InstaFooter} alt="Instagram" className="h-[20px]" />
+                </Link>
+                <Link href="#" className="hover:text-blue-400">
+                  <img src={LinkedInLogo} alt="LinkedIn" className="h-[20px]" />
+                </Link>
+                <Link href="#" className="hover:text-blue-400">
+                  <img
+                    src={WhatsAppFooter}
+                    alt="WhatsApp"
+                    className="h-[20px]"
+                  />
+                </Link>
+              </div>{" "}
+            </div>
             <div
               className="relative"
               onMouseEnter={() => !isMenuOpen && setIsDropdownOpen(true)} // Open on hover (desktop)
               onMouseLeave={() => !isMenuOpen && setIsDropdownOpen(false)} // Close on hover out (desktop)
             >
               <button
-                className={`items-center text-navWhite font-semibold hover:bg-navbg pt-2 py-1 lg:px-1 xl:px-4 space-x-2 hidden lg:flex${
+                className={`items-center text-navWhite font-semibold hover:bg-navbg lg:px-1 xl:px-4 space-x-2 hidden lg:flex${
                   isMenuOpen ? "cursor-pointer" : ""
                 }`}
                 onClick={isMenuOpen ? toggleDropdown : undefined} // Clickable in burger menu only
               >
                 <span
-                  className={`md:text-lg lg:text-sm xl:text-base ${
+                  className={`md:text-lg  lg:text-sm xl:text-base ${
                     isMenuOpen
                       ? "text-navWhite over:bg-navbg font-semibold ms-4 mb-2"
                       : ""
