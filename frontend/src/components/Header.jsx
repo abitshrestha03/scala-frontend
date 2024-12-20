@@ -163,57 +163,58 @@ const Header = () => {
             >
               SERVICES
             </NavLink>
-            <div className="text-center text-white flex flex-col items-start space-y-2 font-semibold lg:hidden ml-20">
-              <NavLink
-                to="/"
-                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
-                onClick={closeMenu}
-              >
-                <span className="text-3xl">•</span> Home
-              </NavLink>
-              <NavLink
-                to="/about"
-                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
-                onClick={closeMenu}
-              >
-                <span className="text-3xl">•</span> About Us
-              </NavLink>
-              <NavLink
-                to="/services"
-                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
-                onClick={closeMenu}
-              >
-                <span className="text-3xl">•</span>   <span>Services</span>
-
-              </NavLink>
-              <NavLink
-                to="/resources/portfolio"
-                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
-                onClick={closeMenu}
-              >
-                <span className="text-3xl">•</span> Portfolio
-              </NavLink>
-              <NavLink
-                to="/resources/blogs"
-                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
-                onClick={closeMenu}
-              >
-                <span className="text-3xl">•</span> Blogs
-              </NavLink>
-              <NavLink
-                to="/resources/careers"
-                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base  flex items-center gap-x-2"
-                onClick={closeMenu}
-              >
-                <span className="text-3xl">•</span> Careers
-              </NavLink>
-              <NavLink
-                to="/contact-us"
-                className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
-                onClick={closeMenu}
-              >
-                <span className="text-3xl">•</span> Contact Us
-              </NavLink>
+            <div className="flex justify-center lg:hidden">
+              <div className="text-white flex flex-col items-start space-y-2 font-semibold lg:hidden ">
+                <NavLink
+                  to="/"
+                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  onClick={closeMenu}
+                >
+                  <span className="text-3xl">•</span> Home
+                </NavLink>
+                <NavLink
+                  to="/about"
+                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  onClick={closeMenu}
+                >
+                  <span className="text-3xl">•</span> About Us
+                </NavLink>
+                <NavLink
+                  to="/services"
+                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  onClick={closeMenu}
+                >
+                  <span className="text-3xl">•</span> <span>Services</span>
+                </NavLink>
+                <NavLink
+                  to="/resources/portfolio"
+                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  onClick={closeMenu}
+                >
+                  <span className="text-3xl">•</span> Portfolio
+                </NavLink>
+                <NavLink
+                  to="/resources/blogs"
+                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  onClick={closeMenu}
+                >
+                  <span className="text-3xl">•</span> Blogs
+                </NavLink>
+                <NavLink
+                  to="/resources/careers"
+                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base  flex items-center gap-x-2"
+                  onClick={closeMenu}
+                >
+                  <span className="text-3xl">•</span> Careers
+                </NavLink>
+                <NavLink
+                  to="/contact-us"
+                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  onClick={closeMenu}
+                >
+                  <span className="text-3xl">•</span> Contact Us
+                </NavLink>
+              </div>
             </div>
 
             <div className="mobile-footer lg:hidden text-white text-center mt-8">
@@ -249,7 +250,7 @@ const Header = () => {
               onMouseLeave={() => !isMenuOpen && setIsDropdownOpen(false)} // Close on hover out (desktop)
             >
               <button
-                className={`items-center text-navWhite font-semibold hover:bg-navbg lg:px-1 xl:px-4 space-x-2 hidden lg:flex${
+                className={`items-center text-navWhite font-semibold hover:bg-navbg hover:py-2 lg:px-1 xl:px-4 space-x-2 hidden lg:flex ${
                   isMenuOpen ? "cursor-pointer" : ""
                 }`}
                 onClick={isMenuOpen ? toggleDropdown : undefined} // Clickable in burger menu only
@@ -257,7 +258,7 @@ const Header = () => {
                 <span
                   className={`md:text-lg  lg:text-sm xl:text-base ${
                     isMenuOpen
-                      ? "text-navWhite over:bg-navbg font-semibold ms-4 mb-2"
+                      ? "text-navWhite hover:bg-navbg font-semibold ms-4 mb-2"
                       : ""
                   }`}
                 >
