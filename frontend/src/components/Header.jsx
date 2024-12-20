@@ -167,49 +167,77 @@ const Header = () => {
               <div className="text-white flex flex-col items-start space-y-2 font-semibold lg:hidden ">
                 <NavLink
                   to="/"
-                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  className={({ isActive }) =>
+                    `px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2 ${
+                      isActive ? "text-navblue" : ""
+                    }`
+                  }
                   onClick={closeMenu}
                 >
                   <span className="text-3xl">•</span> Home
                 </NavLink>
                 <NavLink
                   to="/about"
-                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  className={({ isActive }) =>
+                    `px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2 ${
+                      isActive ? "text-navblue" : ""
+                    }`
+                  }
                   onClick={closeMenu}
                 >
                   <span className="text-3xl">•</span> About Us
                 </NavLink>
                 <NavLink
                   to="/services"
-                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  className={({ isActive }) =>
+                    `px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2 ${
+                      isActive ? "text-navblue" : ""
+                    }`
+                  }
                   onClick={closeMenu}
                 >
                   <span className="text-3xl">•</span> <span>Services</span>
                 </NavLink>
                 <NavLink
                   to="/resources/portfolio"
-                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  className={({ isActive }) =>
+                    `px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2 ${
+                      isActive ? "text-navblue" : ""
+                    }`
+                  }
                   onClick={closeMenu}
                 >
                   <span className="text-3xl">•</span> Portfolio
                 </NavLink>
                 <NavLink
                   to="/resources/blogs"
-                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  className={({ isActive }) =>
+                    `px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2 ${
+                      isActive ? "text-navblue" : ""
+                    }`
+                  }
                   onClick={closeMenu}
                 >
                   <span className="text-3xl">•</span> Blogs
                 </NavLink>
                 <NavLink
                   to="/resources/careers"
-                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base  flex items-center gap-x-2"
+                  className={({ isActive }) =>
+                    `px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2 ${
+                      isActive ? "text-navblue" : ""
+                    }`
+                  }
                   onClick={closeMenu}
                 >
                   <span className="text-3xl">•</span> Careers
                 </NavLink>
                 <NavLink
                   to="/contact-us"
-                  className="px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2"
+                  className={({ isActive }) =>
+                    `px-4 rounded-sm text-[20px] md:text-lg lg:text-sm xl:text-base flex items-center gap-x-2 ${
+                      isActive ? "text-navblue" : ""
+                    }`
+                  }
                   onClick={closeMenu}
                 >
                   <span className="text-3xl">•</span> Contact Us
