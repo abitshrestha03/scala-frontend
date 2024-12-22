@@ -9,15 +9,25 @@ const FAQSection = () => {
   };
 
   const faqs = [
-    { title: "AI Expertise", content: "Details about AI expertise." },
-    { title: "Innovation Hub", content: "Details about the innovation hub." },
+    {
+      title: "AI Expertise",
+      content:
+        "Choose Scala for top-tier AI expertise, blending innovation with precision to craft solutions that drive your business forward in the digital age.",
+    },
+    {
+      title: "Innovation Hub",
+      content:
+        "Choose Scala for top-tier AI expertise, blending innovation with precision to craft solutions that drive your business forward in the digital age.",
+    },
     {
       title: "Client Centric Approach",
-      content: "Details about client-centric approach.",
+      content:
+        "Choose Scala for top-tier AI expertise, blending innovation with precision to craft solutions that drive your business forward in the digital age.",
     },
     {
       title: "Result Driven Solution",
-      content: "Details about result-driven solutions.",
+      content:
+        "Choose Scala for top-tier AI expertise, blending innovation with precision to craft solutions that drive your business forward in the digital age.",
     },
   ];
 
@@ -44,10 +54,17 @@ const FAQSection = () => {
                 onClick={() => toggleAccordion(index)}
               >
                 <span className="font-normal text-xl">{faq.title}</span>
-                <span className="font-normal text-2xl">{openIndex === index ? "-" : "+"}</span>
+                <span className="font-normal text-2xl">
+                  {openIndex === index ? "-" : "+"}
+                </span>
               </button>
               {openIndex === index && (
-                <div className="mt-2 text-sm text-gray-300">{faq.content}</div>
+                <>
+                  <div className="my-2 border-t" style={{border: `1px solid #FFFFFF33`}} />
+                  <div className="mt-2 text-sm text-gray-300">
+                    {faq.content}
+                  </div>
+                </>
               )}
             </div>
           ))}
@@ -57,7 +74,7 @@ const FAQSection = () => {
           <p className="text-gray-400 text-sm mb-4">
             Feel free to reach out to us or email us.
           </p>
-          <Button text="Reach Out To Us"/>
+          <Button text="Reach Out To Us" />
         </div>
       </div>
     </div>
