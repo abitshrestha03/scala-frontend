@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import Logo from "../assets/icons/Logo";
+// import Logo from "../assets/icons/Logo";
+import LogoImage from '../assets/images/Logo.png';
 import MobileLogo from "../assets/icons/MoblieLogo";
 import FacebookLogo from "../assets/images/FacebookFooter.png";
 import LinkedInLogo from "../assets/images/LinkedInFooter.png";
@@ -63,7 +64,8 @@ const Header = () => {
       {" "}
       <div className="flex justify-between items-center">
         <Link to="/">
-          <Logo />
+          {/* <Logo /> */}
+          <img src={LogoImage} style={{ height: "50px" }} alt="Logo" />
         </Link>
         <button className="block lg:hidden text-white" onClick={toggleMenu}>
           <svg

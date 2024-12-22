@@ -1,10 +1,11 @@
-import Logo from "../assets/icons/Logo";
+// import Logo from "../assets/icons/Logo";
 import { Link, NavLink } from "react-router-dom";
-import FacebookLogo from '../assets/images/FacebookFooter.png';
-import LinkedInLogo from '../assets/images/LinkedInFooter.png';
-import InstaFooter from '../assets/images/InstaFooter.png';
-import WhatsAppFooter from '../assets/images/WhatsAppFooter.png';
+import FacebookLogo from "../assets/images/FacebookFooter.png";
+import LinkedInLogo from "../assets/images/LinkedInFooter.png";
+import InstaFooter from "../assets/images/InstaFooter.png";
+import WhatsAppFooter from "../assets/images/WhatsAppFooter.png";
 import EmailInput from "./EmailInput";
+import LogoImage from "../assets/images/Logo.png";
 
 const Footer = () => {
   return (
@@ -12,7 +13,8 @@ const Footer = () => {
       <div className="relative z-10 max-w-8xl px-6 sm:px-8 lg:px-16 mx-auto py-8 sm:py-12 lg:py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
         {/* Logo and Description */}
         <div className="space-y-6 sm:space-y-8">
-          <Logo />
+          {/* <Logo /> */}
+          <img src={LogoImage} style={{ height: "50px" }} alt="Logo" />
           <p className="text-sm text-white leading-5">
             Scala-Tech offers a range of services including design, engineering,
             and project management. We specialize in user experience design, web
@@ -154,9 +156,11 @@ const Footer = () => {
               →
             </button>
           </div> */}
-          <EmailInput/>
+          <EmailInput />
 
-          <h3 className="text-xl font-semibold mb-4 sm:mb-8 mt-6 sm:mt-8">Socials</h3>
+          <h3 className="text-xl font-semibold mb-4 sm:mb-8 mt-6 sm:mt-8">
+            Socials
+          </h3>
           <div className="flex space-x-4">
             <Link href="#" className="hover:text-blue-400">
               <img src={FacebookLogo} alt="Facebook" />
