@@ -79,8 +79,36 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
   //   }
   // };
 
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike"], // Formatting options
+      [{ list: "ordered" }, { list: "bullet" }], // Lists
+      [{ align: [] }], // Text alignment
+      ["link", "image"], // Links and images
+      ["clean"], // Clear formatting
+    ],
+  };
+  
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "list",
+    "bullet",
+    "align",
+    "link",
+    "image",
+  ];
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (files.length === 0) {
+      toast.error("Image is required! Please upload an image.");
+      return; // Prevent form submission
+    }
     setLoading(true);
     try {
       let imageUrl = "";
@@ -209,6 +237,8 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
         <ReactQuill
           value={blog.content}
           onChange={handleEditorChange}
+          modules={modules}
+          formats={formats}
           placeholder="Type Blog Content"
           className="w-full min-h-[40vh] text-xs"
         />
