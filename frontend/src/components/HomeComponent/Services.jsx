@@ -61,7 +61,7 @@ const Services = () => {
 
   return (
     <div
-      className="md:px-4 lg:px-20 xl:px-32 sm:mt-20 mb-20 sm:mt-28 ms:mt-48 sm:px-8 ms:px-6"
+      className="md:px-4 lg:px-20 xl:px-32 sm:mt-20 mb-20 sm:mt-28 ms:mt-48 sm:px-8 ms:px-6 pt-8"
       style={{
         backgroundImage: `url(${ServicesBg})`, 
         backgroundSize: "cover",
