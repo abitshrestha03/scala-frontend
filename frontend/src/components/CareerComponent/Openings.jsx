@@ -140,7 +140,7 @@ const JobOpenings = () => {
 
   return (
     <div className="text-white py-10 ms:px-6">
-      <h1 className="text-center text-3xl font-bold md:mb-8 lg:mb-20">Job Openings</h1>
+      <h1 className="text-center text-3xl font-bold ms:mb-6 md:mb-8 lg:mb-20">Job Openings</h1>
       <div className="max-w-4xl mx-auto">
         {jobs.map((job, index) => (
           <JobCard
