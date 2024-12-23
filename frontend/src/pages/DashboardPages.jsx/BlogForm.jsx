@@ -105,6 +105,10 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!blog.content || blog.content.trim() === "") {
+      toast.error("Blog content is required!"); // Show error using toast
+      return; // Prevent form submission
+    }
     if (files.length === 0) {
       toast.error("Image is required! Please upload an image.");
       return; // Prevent form submission
