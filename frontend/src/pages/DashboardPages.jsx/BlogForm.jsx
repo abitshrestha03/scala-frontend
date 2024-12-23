@@ -172,6 +172,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
           type: "text",
           placeholder: "Blog Title",
           value: blog.title,
+          required:true,
         },
         // {
         //   label: "Category",
@@ -194,6 +195,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
           type: "text",
           placeholder: "Author Role",
           value: blog.author.role,
+          required:true,
         },
       ].map((field) => (
         <div key={field.name} className="space-y-2 flex flex-col">
@@ -221,6 +223,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
           value={blog.category}
           onChange={handleChange}
           className="border border-gray-300 p-2 rounded-md text-xs"
+          required
         >
           <option value="">Select a category</option>
           {categories.map((category) => (
@@ -241,6 +244,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
           formats={formats}
           placeholder="Type Blog Content"
           className="w-full min-h-[40vh] text-xs"
+          required
         />
         {/* <textarea
           id="content"
