@@ -4,12 +4,12 @@ import Button from "../Button";
 const FeaturedProjects = () => {
   return (
     <div className="md:px-4 lg:px-20 xl:px-32 py-12 text-center ms:px-6">
-      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em]">Featured Projects</h2>
-      <p className="text-lg text-gray-400 mt-20">
+      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] mb-4">Featured Projects</h2>
+      <p className="text-lg text-gray-400 mt-2">
         Take a look at our latest projects
       </p>
 
-      <div className="flex md:flex-row sm:flex-col items-center justify-center  flex-wrap gap-8 mt-10 mb-4">
+      <div className="flex md:flex-row sm:flex-col items-center justify-center  flex-wrap gap-8 md:mt-10 lg:mt-20 mb-4">
         {/* Project Card */}
         <div
           className="relative w-[588px] p-4  bg-gradient-to-b from-[rgba(0,61,255,0.05)] to-[rgba(0,0,0,0.05)] 
