@@ -46,7 +46,7 @@ const TeamSection = () => {
       <div className="ms:px-6 md:px-8 lg:px-20 xl:px-32 text-center">
         {/* Title */}
         <h2 className="text-4xl font-bold mb-4">Our Team</h2>
-        <p className="text-gray-300 mb-10">Meet Our Awesome Team Members</p>
+        <p className="text-gray-300 md:mb-10 lg:mb-20">Meet Our Awesome Team Members</p>
 
         {/* Team Member Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 mb-8 gap-4">

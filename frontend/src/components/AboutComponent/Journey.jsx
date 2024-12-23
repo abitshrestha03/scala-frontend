@@ -5,7 +5,7 @@ const Journey = () => {
   return (
     <div className="text-white py-12 md:px-8 lg:px-20 xl:px-32">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-8">Our Journey to Innovation</h2>
+        <h2 className="text-4xl font-bold md:mb-8 lg:mb-20">Our Journey to Innovation</h2>
 
         <div className="relative">
           <img

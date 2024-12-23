@@ -26,7 +26,7 @@ const Experience = () => {
   return (
     <section className="text-white py-12 md:px-8 lg:px-20 xl:px-32">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-16">Experience Our Story</h2>
+        <h2 className="text-4xl font-bold mb-20">Experience Our Story</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-14">
           {items.map((item, index) => (
             <div
