@@ -210,6 +210,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
             className="border border-gray-300 p-2 rounded-md text-xs"
             placeholder={field.placeholder}
             readOnly={field.readOnly} // Apply readOnly property if set
+            required
           />
         </div>
       ))}
