@@ -152,6 +152,30 @@ const BlogList = ({ refresh }) => {
     return isFeatured ? "bg-green-500 text-white" : "bg-red-500 text-white";
   };
 
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike"], // Formatting options
+      [{ list: "ordered" }, { list: "bullet" }], // Lists
+      [{ align: [] }], // Text alignment
+      ["link", "image"], // Links and images
+      ["clean"], // Clear formatting
+    ],
+  };
+  
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "list",
+    "bullet",
+    "align",
+    "link",
+    "image",
+  ];
+
   const handleStatusClick = async (slug, currentStatus) => {
     if (!slug || currentStatus === undefined) {
       console.error("Invalid slug or status");
@@ -458,6 +482,8 @@ const BlogList = ({ refresh }) => {
                       content: content,
                     })
                   }
+                  modules={modules}
+                  formats={formats}
                   placeholder="Type Blog Content"
                   className="w-full min-h-[20vh] text-xs"
                 />
