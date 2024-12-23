@@ -22,7 +22,7 @@ const BlogForm = ({ refreshBlogs, initialData }) => {
     "COMPANY NEWS",
     "TRENDS",
     "CULTURE AND CAREERS",
-    "OTHERS",
+    // "OTHERS",
   ];
 
   const handleEditorChange = (value) => {

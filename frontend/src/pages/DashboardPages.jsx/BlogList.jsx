@@ -26,7 +26,7 @@ const BlogList = ({ refresh }) => {
     "COMPANY NEWS",
     "TRENDS",
     "CULTURE AND CAREERS",
-    "OTHERS",
+    // "OTHERS",
   ];
 
   const onDrop = useCallback((acceptedFiles) => {
