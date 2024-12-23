@@ -48,10 +48,9 @@ const BlogList = ({ refresh }) => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get(
-        `${API_BASE_URL}/api/v1/admin/blog`,
-        { withCredentials: true }
-      );
+      const response = await axios.get(`${API_BASE_URL}/api/v1/admin/blog`, {
+        withCredentials: true,
+      });
       console.log(response.data.data);
       console.log(response.data.data.blogs);
       setBlogs(response?.data?.data?.blogs);
@@ -98,7 +97,6 @@ const BlogList = ({ refresh }) => {
   const togglePopup = () => {
     setShowEditModal(!showEditModal);
   };
-
 
   const handleEditSubmit = async (updatedBlog) => {
     setLoading(true);
@@ -241,12 +239,13 @@ const BlogList = ({ refresh }) => {
               </th>
               <th className="py-3 px-4 text-left">S.N.</th>
               <th className="py-3 px-4 text-left">Title</th>
-              <th className="py-3 px-4 text-left">Content</th>
+              {/* <th className="py-3 px-4 text-left">Content</th> */}
               <th className="py-3 px-4 text-left">Author</th>
               <th className="py-3 px-4 text-left">Profession</th>
               <th className="py-3 px-4 text-left">Category</th>
               <th className="py-3 px-4 text-left">Status</th>
               <th className="py-3 px-4 text-left">Action</th>
+              <th className="py-3 px-4 text-left">Created Date</th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -262,12 +261,12 @@ const BlogList = ({ refresh }) => {
                 </td>
                 <td className="py-3 px-4">{index + 1}</td>
                 <td className="py-3 px-4">{blog.title}</td>
-                <td
+                {/* <td
                   className="py-3 px-4"
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(blog.content),
                   }}
-                ></td>{" "}
+                ></td>{" "} */}
                 <td className="py-3 px-4">{blog.author.name}</td>
                 <td className="py-3 px-4">{blog.author.role}</td>
                 <td className="py-3 px-4">{blog.category}</td>
@@ -299,6 +298,10 @@ const BlogList = ({ refresh }) => {
                       Delete
                     </button>
                   </div>
+                </td>
+                <td className="py-3 px-4 hidden">
+                  {" "}
+                  {new Date(blog?.createdAt).toLocaleDateString("en-CA")}
                 </td>
               </tr>
             ))}
