@@ -299,7 +299,7 @@ const BlogList = ({ refresh }) => {
                     </button>
                   </div>
                 </td>
-                <td className="py-3 px-4 hidden">
+                <td className="py-3 px-4">
                   {" "}
                   {new Date(blog?.createdAt).toLocaleDateString("en-CA")}
                 </td>
