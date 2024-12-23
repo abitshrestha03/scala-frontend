@@ -20,7 +20,7 @@ const Companies = () => {
       <span className="block ms:text-sm sm:text-xl md:tracking-[0.08em] text-center text-white">
         Top Companies
       </span>
-      <div className="flex 2xl:mr-16 overflow-hidden ms:space-x-4 sm:space-x-8 md:space-x-12 lg:space-x-16 ms:mt-4 md:mt-8 w-full">
+      <div className="flex 2xl:mr-16 overflow-hidden ms:space-x-4 sm:space-x-8 md:space-x-12 lg:space-x-16 ms:mt-4 md:mt-20 w-full">
         <div className="flex ms:space-x-4 md:space-x-8 lg:space-x-16 animate-scroll">
           {logos.map((logo, index) => (
             <>

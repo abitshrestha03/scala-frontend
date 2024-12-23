@@ -4,8 +4,8 @@ import Button from "../Button";
 const FeaturedProjects = () => {
   return (
     <div className="md:px-4 lg:px-20 xl:px-32 py-12 text-center ms:px-6">
-      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] mb-4">Featured Projects</h2>
-      <p className="text-lg text-gray-400 mt-2">
+      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em]">Featured Projects</h2>
+      <p className="text-lg text-gray-400 mt-20">
         Take a look at our latest projects
       </p>
 

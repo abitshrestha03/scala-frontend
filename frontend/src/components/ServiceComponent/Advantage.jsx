@@ -3,7 +3,7 @@ import Button from "../Button";
 const ScalaAdvantage = () => {
   return (
     <div className="text-white py-12">
-      <h2 className="text-4xl font-bold text-center mb-8">
+      <h2 className="text-4xl font-bold text-center lg:mb-20">
         The Scala Advantage
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ms:px-6 md:px-4 lg:px-20 xl:px-32">

@@ -37,12 +37,12 @@ const Slider = () => {
 
   return (
     <div className="overflow-hidden md:mx-4 lg:mx-20 xl:mx-32 ms:mx-6">
-      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] mb-4 flex-shrink-0">
+      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] flex-shrink-0">
         Founder
       </h2>{" "}
       <div
         ref={sliderRef}
-        className="flex ms:flex-col lg:flex-row w-full lg:space-x-6 ms:space-y-6 lg:space-y-0 lg:overflow-x-scroll scroll-smooth lg:snap-x snap-mandatory scrollbar-hide"
+        className="flex ms:flex-col lg:flex-row w-full lg:space-x-6 ms:space-y-6 lg:space-y-0 lg:overflow-x-scroll scroll-smooth lg:snap-x snap-mandatory scrollbar-hide lg:mt-20"
       >
         {cards.map((card, index) => (
           <div

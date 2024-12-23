@@ -6,11 +6,11 @@ const WhatWeDo = () => {
   return (
     <div className="md:px-4 lg:px-20 xl:px-32 relative overflow:visible">
       {/* Section Title */}
-      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] mb-4">
+      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em]">
         About Us
       </h2>
 
-      <div className="bg-dark md:-me-4 lg:-me-20 xl:-me-32">
+      <div className="bg-dark md:-me-4 lg:-me-20 xl:-me-32 lg:mt-20">
         <div className="ms:mx-4 md:mx-0">
           <div
             className="hidden sm:block flex flex-col items-start sm:py-12 ms:py-6 sm:px-8 ms:px-4 rounded-lg backdrop-blur-[14px] bg-gradient-to-l from-customGradient1 to-customGradient2 border border-transparent"
@@ -29,11 +29,18 @@ const WhatWeDo = () => {
               What We <span className="text-navblue">Do</span>
             </h2>
             <p className="sm:w-[60%] text-gray-300 sm:text-xl sm:font-normal sm:mb-8 ms:mb-4 sm:leading-8 sm:tracking-[0.09em] ms:text-[12px] ms:leading-[18px] ms:tracking-wider">
-              At Scala-tech, we bring the power of Artificial Intelligence to
+              {/* At Scala-tech, we bring the power of Artificial Intelligence to
               your fingertips. From predictive analytics and process automation
               to advanced data insights, our AI services are designed to
               seamlessly integrate with your existing systems, driving
-              efficiency and productivity.
+              efficiency and productivity. */}
+              At Scala-Tech, we revolutionize how businesses influence the power
+              of Artificial Intelligence. From cutting-edge predictive analytics
+              to seamless process automation, our AI solutions unlock advanced
+              data insights that empower you to make smarter decisions. Designed
+              to integrate effortlessly with your existing systems, our services
+              boost efficiency, streamline workflows, and elevate productivity
+              to new heights. <br /><br /> Ready to transform your business?
             </p>
             <Button text="Learn More" />
           </div>
@@ -64,7 +71,7 @@ const WhatWeDo = () => {
         {/* Image positioned absolutely */}
         <img
           src={WhatWeDoImage}
-          className="absolute top-1/2 mt-12 right-0 transform -translate-y-1/2 h-auto max-h-[80%] opacity-50 lg:opacity-100 hidden sm:block"
+          className="absolute top-1/2 lg:mt-44 xl:mt-32 right-0 transform -translate-y-1/2 h-auto lg:max-h-[65%] xl:max-h-[80%] opacity-50 lg:opacity-100 hidden sm:block"
           alt="Robotic Hand"
           loading="lazy"
         />

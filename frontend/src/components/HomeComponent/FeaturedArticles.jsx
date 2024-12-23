@@ -34,7 +34,7 @@ const FeaturedArticles = () => {
         <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] mb-2">
           Featured Articles
         </h2>
-        <p className="text-gray-400 mb-8">Take a look at our latest articles</p>
+        <p className="text-gray-400 lg:mb-20">Take a look at our latest articles</p>
 
         {/* Custom Swiper Slider */}
         <div className="relative mb-4">

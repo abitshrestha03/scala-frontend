@@ -68,10 +68,10 @@ const Services = () => {
         backgroundPosition: "right center"
       }}
     >
-      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] mb-12">
+      <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em]">
         Our Services
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-y-20 ms:gap-y-14">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-y-20 ms:gap-y-14 lg:mt-20">
         {services.map((service, index) => (
           <ServiceCard
             key={index}
