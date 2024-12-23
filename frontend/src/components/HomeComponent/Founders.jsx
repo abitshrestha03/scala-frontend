@@ -42,7 +42,7 @@ const Slider = () => {
       </h2>{" "}
       <div
         ref={sliderRef}
-        className="flex ms:flex-col lg:flex-row w-full lg:space-x-6 ms:space-y-6 lg:space-y-0 lg:overflow-x-scroll scroll-smooth lg:snap-x snap-mandatory scrollbar-hide lg:mt-20"
+        className="flex ms:flex-col lg:flex-row w-full lg:space-x-6 ms:space-y-6 lg:space-y-0 lg:overflow-x-scroll scroll-smooth lg:snap-x snap-mandatory scrollbar-hide ms:mt-6 lg:mt-20"
       >
         {cards.map((card, index) => (
           <div

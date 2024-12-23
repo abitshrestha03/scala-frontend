@@ -10,7 +10,7 @@ const WhatWeDo = () => {
         About Us
       </h2>
 
-      <div className="bg-dark md:-me-4 lg:-me-20 xl:-me-32 lg:mt-20">
+      <div className="bg-dark md:-me-4 lg:-me-20 xl:-me-32 ms:mt-6 lg:mt-20">
         <div className="ms:mx-4 md:mx-0">
           <div
             className="hidden sm:block flex flex-col items-start sm:py-12 ms:py-6 sm:px-8 ms:px-4 rounded-lg backdrop-blur-[14px] bg-gradient-to-l from-customGradient1 to-customGradient2 border border-transparent"

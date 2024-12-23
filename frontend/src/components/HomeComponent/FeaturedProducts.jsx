@@ -9,7 +9,7 @@ const FeaturedProjects = () => {
         Take a look at our latest projects
       </p>
 
-      <div className="flex md:flex-row sm:flex-col items-center justify-center  flex-wrap gap-8 md:mt-10 lg:mt-20 mb-4">
+      <div className="flex md:flex-row sm:flex-col items-center justify-center  flex-wrap gap-8 ms:mt-6 md:mt-10 lg:mt-20 mb-4">
         {/* Project Card */}
         <div
           className="relative w-[588px] p-4  bg-gradient-to-b from-[rgba(0,61,255,0.05)] to-[rgba(0,0,0,0.05)] 
