@@ -36,7 +36,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="overflow-hidden md:mx-4 lg:mx-20 xl:mx-32 ms:mx-6">
+    <div className="overflow-hidden md:mx-4 lg:mx-20 xl:mx-32 3xl:mx-80 ms:mx-6">
       <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] flex-shrink-0">
         Founder
       </h2>{" "}

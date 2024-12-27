@@ -13,7 +13,7 @@ const FeaturedArticle = () => {
         borderImageSlice: 1, // Ensures the gradient spans the border
         boxShadow: "0px 0px 14px 0px #003DFF3D",
       }}
-      className="ms:mx-6 md:mx-8 lg:mx-20 xl:mx-32 py-10 rounded-lg mt-4"
+      className="ms:mx-6 md:mx-8 lg:mx-20 xl:mx-32 3xl:mx-80 py-10 rounded-lg mt-4"
     >
       <div className="rounded-xl">
         <div className="flex flex-col lg:flex-row items-center gap-6 px-8">

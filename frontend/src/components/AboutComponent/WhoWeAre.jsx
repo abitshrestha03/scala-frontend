@@ -3,10 +3,10 @@ import Button from "../Button";
 
 const WhoWeAre = () => {
   return (
-    <section className="ms:px-6 md:px-8 lg:px-20 xl:px-32 relative">
+    <section className="ms:px-6 md:px-8 lg:px-20 xl:px-32 3xl:px-80 relative">
       <div className="text-white py-12">
         <div
-          className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border-2 border-solid ms:px-2 md:px-8 whoWeAre"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border-2 border-solid ms:px-2 md:px-8 whoWeAre"
           // style={{
           //   background: `
           //     linear-gradient(270.82deg, rgba(255, 255, 255, 0) 0.62%, rgba(255, 255, 255, 0.049) 99.26%),

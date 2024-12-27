@@ -3,7 +3,7 @@ import Button from "../Button";
 
 const Landing = () => {
   return (
-    <div className="sm:px-8 md:px-8 lg:px-20 xl:px-32 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-28 ms:mt-44 lg:mt-60 ms:px-6">
+    <div className="sm:px-8 md:px-8 lg:px-20 xl:px-32 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-28 ms:mt-44 lg:mt-60 ms:px-6 3xl:px-80">
       <div className="landing-contents ms:ms-2">
         <h1
           className="text-white ms:text-4xl ms:tracking-wider sm:text-6xl md:text-6xl uppercase font-bold md:mb-8  ms:mb-4 sm:mb-4 ms:text-glow md:tracking-wide md:text-center lg:text-left"

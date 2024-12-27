@@ -9,7 +9,7 @@ const ContactUs = () => {
     setValue(e.target.value);
   };
   return (
-    <div className="relative min-h-screen py-8 md:px-8 lg:px-20 xl:px-32 ms:px-6">
+    <div className="relative min-h-screen py-8 md:px-8 lg:px-20 xl:px-32 ms:px-6 3xl:px-80">
       {/* Background Map or Design */}
       <div
         className="absolute inset-0 bg-cover bg-no-repeat opacity-100"

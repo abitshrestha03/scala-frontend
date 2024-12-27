@@ -18,7 +18,7 @@ const WhyJoinUs = () => {
   const [largeImage, setLargeImage] = useState(images[0]);
 
   return (
-    <div className="bg-dark-blue text-white ms:px-6 md:px-8 lg:px-20 xl:px-32">
+    <div className="bg-dark-blue text-white ms:px-6 md:px-8 lg:px-20 xl:px-32 3xl:px-80">
       <div
         className="flex flex-col md:flex-row ms:gap-y-8 joinUs"
       >

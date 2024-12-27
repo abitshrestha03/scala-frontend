@@ -43,7 +43,7 @@ const TeamSection = () => {
 
   return (
     <div className="text-white py-12">
-      <div className="ms:px-6 md:px-8 lg:px-20 xl:px-32 text-center">
+      <div className="ms:px-6 md:px-8 lg:px-20 xl:px-32 3xl:px-80 text-center">
         {/* Title */}
         <h2 className="text-4xl font-bold mb-4">Our Team</h2>
         <p className="text-gray-300 ms:mb-6 md:mb-10 lg:mb-20">Meet Our Awesome Team Members</p>
@@ -54,7 +54,7 @@ const TeamSection = () => {
             <div key={index} className="shadow-lg overflow-hidden">
               <div className="flex items-center justify-center">
                 <div
-                  className="relative w-full ms:h-[450px] md:h-[550px] bg-[#FFFFFFD9] shadow-lg rounded-sm overflow-hidden"
+                  className="relative w-full ms:h-[450px] md:h-[550px] 3xl:h-[60vh] bg-[#FFFFFFD9] shadow-lg rounded-sm overflow-hidden"
                   style={{ backdropFilter: `blur(7px)` }}
                 >
                   {/* Web graphic */}

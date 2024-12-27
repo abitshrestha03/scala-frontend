@@ -28,7 +28,7 @@ const OnboardingProcess = () => {
   ];
 
   return (
-    <div className="text-white py-10 ms:px-6 md:px-4 lg:px-20 xl:px-32">
+    <div className="text-white py-10 ms:px-6 md:px-4 lg:px-20 xl:px-32 3xl:px-80">
       <h1 className="text-center text-2xl md:text-3xl font-bold ms:mb-6 md:mb-8 lg:mb-20">
         Onboarding Process
       </h1>

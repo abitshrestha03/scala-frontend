@@ -40,7 +40,7 @@ const PortfolioItem = () => {
       : portfolioItems.filter((item) => item.category === activeFilter);
 
   return (
-    <div className="text-white py-12 ms:px-6 md:px-8 lg:px-20 xl:px-32 mb-20">
+    <div className="text-white py-12 ms:px-6 md:px-8 lg:px-20 xl:px-32 3xl:px-80 mb-20">
       <div className="flex whitespace-nowrap overflow-x-auto gap-2 mb-6 scrollbar-hide">
           {[
             "All",

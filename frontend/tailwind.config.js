@@ -10,12 +10,13 @@ export default {
     extend: {
       screens: {
         ms: '300px', // Custom xs breakpoint (you can choose any value here)
+        '3xl': '1920px',
       },
       spacing: {
         '72': '18rem',  
         '80': '20rem',
         '96': '24rem',  
-      },
+      }, 
       colors: {
         'dark': '#00061B',
         'navblue':'#003DFF',

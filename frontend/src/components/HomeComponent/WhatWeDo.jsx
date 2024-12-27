@@ -4,7 +4,7 @@ import robothandms from "../../assets/images/robothandms.png";
 
 const WhatWeDo = () => {
   return (
-    <div className="md:px-4 lg:px-20 xl:px-32 relative overflow:visible">
+    <div className="md:px-4 lg:px-20 xl:px-32 3xl:px-80 relative overflow:visible">
       {/* Section Title */}
       <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em]">
         About Us

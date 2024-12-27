@@ -6,7 +6,7 @@ import PortfolioItem from "../../components/PortfolioComponent/PortfolioItem";
 const Portfolio = () => {
   return (
     <>
-      <div className="ms:px-6 flex ms:flex-col lg:flex-row lg:items-center lg:py-12 md:px-8 lg:px-20 xl:px-32 ms:mt-36 lg:mt-20 lg:ml-20">
+      <div className="ms:px-6 flex ms:flex-col lg:flex-row lg:items-center lg:py-12 md:px-8 lg:px-20 xl:px-32 ms:mt-36 lg:mt-20 lg:ml-20 3xl:px-80">
         <h2 className="ms:text-5xl text-6xl font-bold text-white flex-shrink-0">
           Our{" "}
           <span className="text-navblue">

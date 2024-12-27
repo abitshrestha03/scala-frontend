@@ -4,7 +4,7 @@ import FeaturedArticle from "../../components/BlogComponent/FeaturedArticle";
 const Blog = () => {
   return (
     <>
-      <div className="flex lg:items-center lg:py-12 ms:px-6 md:px-8 lg:px-20 xl:px-48 ms:mt-36 lg:mt-20 lg:ml-18 ms:flex-col lg:flex-row">
+      <div className="flex lg:items-center lg:py-12 ms:px-6 md:px-8 lg:px-20 xl:px-48 3xl:px-80 ms:mt-36 lg:mt-20 lg:ml-18 ms:flex-col lg:flex-row">
         <h2 className="ms:text-5xl sm:text-5xl xl:text-6xl font-bold text-navblue flex-shrink-0">
           Blog
         </h2>

@@ -41,7 +41,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <div className="md:px-4 lg:px-20 xl:px-32 text-white py-12">
+    <div className="md:px-4 lg:px-20 xl:px-32 3xl:px-80 text-white py-12">
       <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] mb-2">Testimonials</h2>
       <p className="text-center text-lg ms:mb-20 lg:mb-20">
         Hear what our customers have to say.

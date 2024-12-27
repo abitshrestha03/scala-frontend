@@ -13,7 +13,7 @@ const logos = [
 
 const Companies = () => {
   return (
-    <div className="ms:mb-12 ms:mt-16 md:px-4 md:mt-4 lg:px-20 lg:mt-0 xl:px-32">
+    <div className="ms:mb-12 ms:mt-16 md:px-4 md:mt-4 lg:px-20 lg:mt-0 xl:px-32 3xl:px-80">
       <h2 className="text-white text-center font-semibold ms:text-3xl sm:text-5xl md:tracking-[0.04em] ms:-mt-6 md:mt-8">
         Trusted By
       </h2>

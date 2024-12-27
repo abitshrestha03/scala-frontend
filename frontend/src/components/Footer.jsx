@@ -10,7 +10,7 @@ import LogoImage from "../assets/images/Logo.png";
 const Footer = () => {
   return (
     <div className="relative text-white">
-      <div className="relative z-10 max-w-8xl px-6 sm:px-8 lg:px-16 mx-auto py-8 sm:py-12 lg:py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="relative z-10 max-w-8xl px-6 sm:px-8 lg:px-16 3xl:px-80 mx-auto py-8 sm:py-12 lg:py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
         {/* Logo and Description */}
         <div className="space-y-6 sm:space-y-8">
           {/* <Logo /> */}

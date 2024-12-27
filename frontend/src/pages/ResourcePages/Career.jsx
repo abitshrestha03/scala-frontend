@@ -5,7 +5,7 @@ import JobOpenings from "../../components/CareerComponent/Openings";
 const Career = () => {
   return (
     <>
-      <div className="ms:px-6 flex flex-col lg:flex-row lg:items-center py-12 md:px-8 lg:px-20 xl:px-48 mt-28">
+      <div className="ms:px-6 flex flex-col lg:flex-row lg:items-center py-12 md:px-8 lg:px-20 xl:px-48 3xl:px-80 mt-28">
         <h2 className="ms:text-4xl md:text-5xl lg:text-6xl font-bold text-navblue flex-shrink-0">
             Join 
           <span className="text-white  lg:block">
